@@ -1,0 +1,84 @@
+.signin {
+    padding-top: 150px;
+    padding-bottom: 100px;
+}
+
+.sign-form {
+    display: flex;
+    max-width: 800px;
+    height: auto;
+    margin: auto;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign-form .sign-input {
+    width: 50%;
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.sign-title {
+    font-size: 3.5rem;
+    font-weight: 600;
+    color: var(--blue);
+    margin-bottom: 2rem;
+}
+.signIn__error{
+    color: red;
+    margin: 1rem 0;
+}
+.input {
+    width: 100%;
+    padding: 0.7rem;
+    outline: 0;
+    border: 0;
+    background-color: white;
+    border-bottom: 2px solid rgba(88, 78, 0, 0.2);
+}
+
+input:focus {
+    border-bottom: 2px solid var(--blue);
+}
+
+.error {
+    color: red;
+    margin-top: 0.2rem;
+    margin-left: 0.7rem;
+    align-self: start;
+}
+
+.sign-btn {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+}
+
+.sign-in__btn, .sign-in__btn__load {
+    margin: 3rem;
+    width: 25%;
+    padding: 1rem;
+    border: none;
+    background-color: var(--blue);
+    font-weight: bold;
+    color: var(--white);
+}
+.sign-in__btn__load{
+    opacity: 0.8 !important;
+}
+.sign-in__btn:hover {
+    opacity: 0.8;
+}
+
+.dir_signup {
+    display: flex;
+}
+
+.sign-up__btn {
+    color: var(--blue);
+}
