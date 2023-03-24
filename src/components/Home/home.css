@@ -68,7 +68,7 @@
 
 /* policy */
 .policy-card {
-  margin-top: 50px;
+  padding-top: 50px;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -76,17 +76,24 @@
 }
 
 .policy-card__item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding: 1rem ;
   background-color: white;
-  padding: 1rem 3rem;
+  height: 100px !important;
   box-shadow: rgba(184, 188, 193, 0.5) 0px 8px 24px;
 
 }
 
+.policy__desc{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .policy-card__icon {
   padding-right: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
 }
 
 .policy-card__icon>i {
@@ -106,81 +113,4 @@
 .policy-card__info__name,
 .policy-card__info__description {
   padding: 0.5rem 0;
-}
-
-/* topproducts */
-.card-products {
-  width: 100%;
-  height: auto;
-  letter-spacing: 1px;
-  border-radius: 20px;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.product_card_img {
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-}
-
-.card__img {
-  width: 100%;
-  padding: 1rem;
-  height: auto;
-  overflow: hidden;
-  transition: transform 0.5s linear;
-}
-
-.card__img:hover {
-  transform: scale(1.5);
-}
-
-.card__title {
-  color: var(--blue);
-  font-weight: 500;
-  font-size: 1rem;
-  padding: 1rem 0;
-  cursor: pointer;
-}
-
-.card__content {
-  width: 100%;
-  font-size: 1rem;
-  font-weight: 300;
-  opacity: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.card__price {
-  font-weight: bold;
-  align-self: start;
-  padding-left: 20%;
-  font-size: 1rem;
-}
-
-.card__link {
-  padding: 0.8rem;
-  background-color: var(--blue);
-  font-size: 1.1rem;
-  margin-top: 2rem;
-  font-weight: bold;
-  color: var(--white);
-}
-.card__link:hover{
-  opacity: 0.8;
-}
-.gird-card {
-  margin-top: 50px;
-  margin-bottom: 50px;
-  /* width: 100%; */
-  display: grid;
-  gap: 50px;
-  grid-template-columns: auto auto auto auto;
-  /* padding: 10px; */
 }

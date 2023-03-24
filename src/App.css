@@ -1,7 +1,6 @@
 .App {
   text-align: center;
 }
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -23,7 +22,9 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+.active{
+  color: var(--blue);
+}
 .App-link {
   color: #61dafb;
 }

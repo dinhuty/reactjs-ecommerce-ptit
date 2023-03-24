@@ -1,4 +1,28 @@
 .products {
    padding-top: 100px;
-
+   padding-bottom: 3rem;
+}
+.products-title{
+   margin-bottom: 3rem;
+}
+.card__img{
+   overflow: hidden;
+}
+.img__product{
+   transition: all .2s ease-in-out;
+}
+.img__product:hover{
+   transform: scale(1.2)
+}
+.card__btn{
+   color: var(--white);
+   background-color: var(--blue) !important;
+}
+.card__btn:hover{
+   opacity: 0.9;
+}
+.card__link__btn{
+   display: flex;
+   justify-content: space-around;
+   margin-bottom: 2rem;
 }

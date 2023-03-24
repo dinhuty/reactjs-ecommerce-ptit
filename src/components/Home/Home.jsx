@@ -1,10 +1,12 @@
 import React from 'react'
 import { useEffect, useState, useCallback } from 'react'
+import { Button, Card, Col, Container, Row } from 'react-bootstrap'
 import './home.css'
 import img_banner from '../../data/img_banner.jpg'
 import data from '../../data/db.json'
 import { Link, useNavigate } from 'react-router-dom'
-
+import { useDispatch } from 'react-redux'
+import { add } from '../Redux/cartSlice'
 
 export const Home = () => {
 
@@ -18,7 +20,10 @@ export const Home = () => {
   );
 }
 const TopProducts = () => {
-
+  const dispatch = useDispatch()
+  const handleAddtoCart = (product) =>{
+    dispatch(add(product))
+  }
   const navigate = useNavigate();
   const hanldeViewProduct = (productID) => {
     navigate('/products/' + productID)
@@ -26,40 +31,54 @@ const TopProducts = () => {
   const count_p = [1, 2, 3, 4, 5, 6, 7, 8, 9]
   return (
     <div className="container">
-      <h1 className='home-title'>Tất cả sản phẩm</h1>
-      <div className="gird-card">
-        {
-          data.products.map((product, index) => (
-            <div className="card-products" key={product.id}>
-              <div onClick={() => hanldeViewProduct(product.id)} className="product_card_img">
-                <img src={product.image} className='card__img' />
-              </div>
-              <h2 onClick={() => hanldeViewProduct(product.id)} className='card__title'>{product.title}</h2>
-              <div className="card__content">
-                <span className='card__price'>{product.price}<i class="fa-solid fa-dong-sign"></i></span>
-                <Link to={`/products/${product.id}`} className='card__link'>Xem chi tiết</Link>
-              </div>
-            </div>
-          ))
-        }
-      </div>
       <h1 className='home-title'>Sản phẩm mới</h1>
-      <div className="gird-card">
+      <Row xl={5} md={3} xs={2} className='g-4' >
         {
-          data.products.map((product, index) => (
-            <div className="card-products" key={product.id}>
-              <div onClick={() => hanldeViewProduct(product.id)} className="product_card_img">
-                <img src={product.image} className='card__img' />
-              </div>
-              <h2 onClick={() => hanldeViewProduct(product.id)} className='card__title'>{product.title}</h2>
-              <div className="card__content">
-                <span className='card__price'>{product.price}<i class="fa-solid fa-dong-sign"></i></span>
-                <Link to={`/products/${product.id}`} className='card__link'>Xem chi tiết</Link>
-              </div>
-            </div>
+          data.products.slice(0, 5).map((product, index) => (
+            <Col>
+              <Card as={Col} key={product.id} className='g-4 '>
+                <div className='card__img' onClick={() => hanldeViewProduct(product.id)}>
+                  <Card.Img src={product.image} className=' cursor-btn' />
+                </div>
+                <Card.Body>
+                  <Card.Title onClick={() => hanldeViewProduct(product.id)} className='cursor-btn'>{product.title}</Card.Title>
+                  <Card.Text>
+                    <span>{product.price}<i class="fa-solid fa-dong-sign"></i></span>
+                  </Card.Text>
+
+                </Card.Body>
+                <Link className='card__link__btn' >
+                  <Button onClick={() => handleAddtoCart(product)} className='card__btn' > Add to cart </Button>
+                </Link>
+              </Card>
+            </Col>
           ))
         }
-      </div>
+      </Row>
+      <h1 className='home-title'>Sản phẩm bán chạy</h1>
+      <Row xl={5} md={3} xs={2} className='g-4 gird__product' >
+        {
+          data.products.map((product, index) => (
+            <Col>
+              <Card as={Col} key={product.id} className='card__product'>
+                <div className='card__img' onClick={() => hanldeViewProduct(product.id)}>
+                  <Card.Img src={product.image} className='img__product cursor-btn' />
+                </div>
+                <Card.Body>
+                  <Card.Title onClick={() => hanldeViewProduct(product.id)} className='cursor-btn'>{product.title}</Card.Title>
+                  <Card.Text>
+                    <span>{product.price}<i class="fa-solid fa-dong-sign"></i></span>
+                  </Card.Text>
+
+                </Card.Body>
+                <Link className='card__link__btn' >
+                  <Button onClick={() => handleAddtoCart(product)} className='card__btn' > Add to cart </Button>
+                </Link>
+              </Card>
+            </Col>
+          ))
+        }
+      </Row>
     </div>
   );
 }
@@ -231,27 +250,36 @@ const PolicyCard = () => {
       name: "Hỗ trợ bảo hành",
       desc: "Hỗ trợ đổi trả nhanh chóng"
     },
+
   ]
   return (
-    <div className="policy-card container">
-      {
-        policy.map((p, index) => (
-          <div className="policy-card__item" key={index}>
-            <div className="policy-card__icon">
-              <i className={p.icon}></i>
-            </div>
-            <div className="policy-card__info">
-              <div className="policy-card__info__name">
-                <div className="span">{p.name}</div>
-              </div>
-              <div className="policy-card__info__description">
-                <div className="span">{p.desc}</div>
+    <div className="container">
 
-              </div>
-            </div>
-          </div>
-        ))
-      }
+      <Row xl={4} md={2} xs={1} className='g-2 policy-card'>
+        {
+          policy.map((p, index) => (
+            <Col key={index}>
+              <Card className="policy-card__item">
+                <Row className='policy__desc'>
+                  <Col className="policy-card__icon" xl={3} md={3} xs={3}>
+                    <i className={p.icon}></i>
+                  </Col>
+                  <Col className="policy-card__info" xl={9} md={9} xs={9}>
+                    <div className="policy-card__info__name">
+                      <div className="span">{p.name}</div>
+                    </div>
+                    <div className="policy-card__info__description">
+                      <div className="span">{p.desc}</div>
+
+                    </div>
+                  </Col>
+                </Row>
+              </Card>
+            </Col>
+          ))
+        }
+      </Row>
+
     </div>
   );
 }
@@ -259,23 +287,25 @@ const Slide = () => {
 
   return (
     <div className="slide container">
-      <div className="slide__info">
-        <div className="slide__info__title">
-          <span>Polo nữ Pima cao cấp</span>
-        </div>
-        <div className="slide__info__desc">
-          <span>Nhắc đến sự đẳng cấp là không thể không nhắc đến dòng vải pima. Nó tạo nên chất lượng tốt nhất cho bất kỳ sản phẩm thời trang nào. Sợi vải pima dài và dày hơn sợi cotton thông thường gấp đôi nhờ công nghệ dệt tân tiến. Điều đó làm cho kết cấu áo polo chắc chắn, bền chặt, hạn chế tối đa xù lông, mềm mượt, bền màu, vô cùng đảm bảo sức khoẻ người dùng</span>
+      <Row xs={1} md={2} xl={2} className="align-items-center">
+        <Col className="slide__info" xl={8}>
+          <div className="slide__info__title">
+            <span>Polo nữ Pima cao cấp</span>
+          </div>
+          <div className="slide__info__desc">
+            <span>Nhắc đến sự đẳng cấp là không thể không nhắc đến dòng vải pima. Nó tạo nên chất lượng tốt nhất cho bất kỳ sản phẩm thời trang nào. Sợi vải pima dài và dày hơn sợi cotton thông thường gấp đôi nhờ công nghệ dệt tân tiến. Điều đó làm cho kết cấu áo polo chắc chắn, bền chặt, hạn chế tối đa xù lông, mềm mượt, bền màu, vô cùng đảm bảo sức khoẻ người dùng</span>
 
-        </div>
-        <div className="slide__info__btn">
-          <span>Xem chi tiết</span>
+          </div>
+          <div className="slide__info__btn">
+            <span>Xem chi tiết</span>
 
-        </div>
+          </div>
 
-      </div>
-      <div className="slide__img">
-        <img className='slide__img' src={img_banner} />
-      </div>
+        </Col>
+        <Col className="slide__img" xl={4}>
+          <img className='slide__img' src={img_banner} />
+        </Col>
+      </Row>
     </div>
   );
 }

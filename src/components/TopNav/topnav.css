@@ -1,16 +1,18 @@
-.header {
-  background-color: white;
-  position: fixed;
+.headerx {
+  /* position: fixed !important; */
+  background-color: var(--white) !important;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 99;
   height: 90px;
   transition: height 0.4s ease;
-  color: var(--black);
 }
-
-.header .container {
+.linktext{
+  color: black;
+  font-size: 1.3rem;
+}
+.headerx .container {
   height: 100%;
   padding-top: 0px;
 }
@@ -45,14 +47,16 @@
   justify-content: space-between;
   align-content: center;
   height: 100%;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 
-.header__menu__cart {
+.header__menu__cart, .header__menu__cart2 {
   position: relative;
-  /* padding: 0.4rem; */
+  margin: auto;
 }
-
+.active{
+  color: red !important;
+}
 .header__menu__cart .header__menu__count-cart {
   position: absolute;
   top: 50%;
