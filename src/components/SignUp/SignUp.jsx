@@ -37,14 +37,15 @@ const SignUp = () => {
   useEffect(() => {
     setErrors(validate(data, "signUp"));
   }, [data, focus]);
-  // focusHandler
-  const focusHandler = (event) => {
+  // blurHandler
+  const blurHandler = (event) => {
     setFocus({ ...focus, [event.target.name]: true });
   };
   //   submitHandler
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true)
+    setSignUpError('')
 
     const name = data.Name
     const email = data.Email
@@ -91,7 +92,7 @@ const SignUp = () => {
             name="Name"
             value={data.Name}
             onChange={changeHandler}
-            onFocus={focusHandler}
+            onBlur={blurHandler}
             placeholder='Name'
           />
           {errors.Name && focus.Name && <span className='error'>{errors.Name}</span>}
@@ -103,7 +104,7 @@ const SignUp = () => {
             name="Email"
             value={data.Email}
             onChange={changeHandler}
-            onFocus={focusHandler}
+            onBlur={blurHandler}
             placeholder="Email"
           />
           {errors.Email && focus.Email && <span className='error'>{errors.Email}</span>}
@@ -115,7 +116,7 @@ const SignUp = () => {
             name="Password"
             value={data.Password}
             onChange={changeHandler}
-            onFocus={focusHandler}
+            onBlur={blurHandler}
             placeholder="Mật khẩu"
           />
           {errors.Password && focus.Password && <span className='error'>{errors.Password}</span>}
@@ -127,7 +128,7 @@ const SignUp = () => {
             name="ConfrimPassword"
             value={data.ConfrimPassword}
             onChange={changeHandler}
-            onFocus={focusHandler}
+            onBlur={blurHandler}
             placeholder="Xác nhận mật khẩu"
           />
           {errors.ConfrimPassword && focus.ConfrimPassword && (
@@ -141,7 +142,7 @@ const SignUp = () => {
             name="PhoneNumber"
             value={data.PhoneNumber}
             onChange={changeHandler}
-            onFocus={focusHandler}
+            onBlur={blurHandler}
             placeholder='Số điện thoại'
           />
           {errors.PhoneNumber && focus.PhoneNumber && <span className='error'>{errors.PhoneNumber}</span>}
@@ -153,7 +154,7 @@ const SignUp = () => {
             name="Address"
             value={data.Address}
             onChange={changeHandler}
-            onFocus={focusHandler}
+            onBlur={blurHandler}
             placeholder='Địa chỉ'
           />
           {errors.Address && focus.Address && <span className='error'>{errors.Address}</span>}

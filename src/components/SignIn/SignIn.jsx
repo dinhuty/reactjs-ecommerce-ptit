@@ -48,11 +48,13 @@ const SignIn = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoginError()
     setLoading(true)
     const email = data.Email
     const password = data.Password
     if (Object.keys(errors).length) {
-      toast('Vui lòng nhập đúng thông tin')
+      setLoginError('Vui lòng nhập đúng thông tin')
+      setLoading(false)
       return;
     }
     axios
@@ -67,7 +69,7 @@ const SignIn = () => {
         dispatch(authActions.getToken())
         dispatch(authActions.isLogin())
         navigate('/')
-        toast('longin thành công')
+        toast('Đăng nhập thành công')
 
       }).catch(errors => {
         if (!errors?.response) {
@@ -97,7 +99,7 @@ const SignIn = () => {
             name="Email"
             value={data.Email}
             onChange={changeHandler}
-            onFocus={focusHandler}
+            onBlur={focusHandler}
             placeholder="Email"
           />
           {errors.Email && focus.Email && <span className='error'>{errors.Email}</span>}
@@ -109,7 +111,7 @@ const SignIn = () => {
             name="Password"
             value={data.Password}
             onChange={changeHandler}
-            onFocus={focusHandler}
+            onBlur={focusHandler}
             placeholder="Mật khẩu"
           />
           {errors.Password && focus.Password && <span className='error'>{errors.Password}</span>}

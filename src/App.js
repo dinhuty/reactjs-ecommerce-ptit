@@ -18,7 +18,7 @@ function App() {
       <SkeletonTheme>
         <ToastContainer></ToastContainer>
         {/* basename='/reactjs-ecommerce-ptit' */}
-        <BrowserRouter basename='/reactjs-ecommerce-ptit'>
+        <BrowserRouter>
           <TopNav />
           <Routes>
             <Route exact path="/" element={<Home />} />

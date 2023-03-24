@@ -217,19 +217,19 @@ const PolicyCard = () => {
       desc: "Miễn phí với đơn hàng >150k"
     },
     {
-      icon: "fa-solid fa-bag-shopping",
-      name: "Miễn phí giao hàng",
-      desc: "Miễn phí với đơn hàng >150k"
+      icon: "fa-solid fa-truck-fast",
+      name: "Thanh toán COD",
+      desc: "Thanh toán khi nhận hàng COD"
     },
     {
-      icon: "fa-solid fa-bag-shopping",
-      name: "Miễn phí giao hàng",
-      desc: "Miễn phí với đơn hàng >150k"
+      icon: "fa-solid fa-gem",
+      name: "Khách hàng VIP",
+      desc: "Ưu đãi dành cho khách hàng VIP"
     },
     {
-      icon: "fa-solid fa-bag-shopping",
-      name: "Miễn phí giao hàng",
-      desc: "Miễn phí với đơn hàng >150k"
+      icon: "fa-solid fa-hand-holding-heart",
+      name: "Hỗ trợ bảo hành",
+      desc: "Hỗ trợ đổi trả nhanh chóng"
     },
   ]
   return (
