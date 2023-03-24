@@ -15,23 +15,24 @@ import 'react-toastify/dist/ReactToastify.css';
 function App() {
   return (
     <>
-    <SkeletonTheme>
-      <ToastContainer></ToastContainer>
-      <BrowserRouter>
-        <TopNav />
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/signIn" element={<SignIn />} />
-          <Route path="/signUp" element={<SignUp />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/introduce" element={<Products />} />
-          <Route path="/contact" element={<Products />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/products/:id" element={<ProductDetail />} />
+      <SkeletonTheme>
+        <ToastContainer></ToastContainer>
+        {/* basename='/reactjs-ecommerce-ptit' */}
+        <BrowserRouter basename='/reactjs-ecommerce-ptit'>
+          <TopNav />
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route path="/signIn" element={<SignIn />} />
+            <Route path="/signUp" element={<SignUp />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/introduce" element={<Products />} />
+            <Route path="/contact" element={<Products />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/products/:id" element={<ProductDetail />} />
 
-        </Routes>
-        <Footer />
-      </BrowserRouter>
+          </Routes>
+          <Footer />
+        </BrowserRouter>
       </SkeletonTheme>
     </>
   );
