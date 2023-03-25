@@ -28,15 +28,6 @@
     text-transform: capitalize;
 }
 
-/* .detail__product-title:before {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 60px;
-    height: 2px;
-    content: "";
-    background-color: #c50000;
-} */
 .detail__product-price{
     color: red;
     display: flex;

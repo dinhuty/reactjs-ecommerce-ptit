@@ -71,3 +71,41 @@ code {
 .cursor-btn{
   cursor: pointer;
 }
+.main__title {
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.5em;
+  padding-bottom: 15px;
+  position: relative;
+  margin: 4rem  0 2rem 0;
+}
+
+.main__title:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 5px;
+  width: 55px;
+  background-color: var(--blue);
+}
+
+.main__title:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 2px;
+  height: 1px;
+  width: 95%;
+  max-width: 255px;
+  background-color: var(--blue);
+}
+
+.active {
+  color: var(--blue);
+}
+
+.App-link {
+  color: #61dafb;
+}

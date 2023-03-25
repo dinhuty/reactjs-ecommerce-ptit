@@ -16,7 +16,7 @@ const Products = () => {
   }
   return (
     <div className='products container'>
-      <h1 className='products-title'>Tất cả sản phẩm</h1>
+      <h1 className='main__title product__title'>Tất cả sản phẩm</h1>
       <Row xl={5} md={3} xs={2} className='g-4 gird__product' >
         {
           data.products.map((product, index) => (
