@@ -44,3 +44,42 @@
 .cart__product__title{
     text-transform: capitalize;
 }
+.cart__checkout__form{
+    padding-bottom: 2rem;
+}
+.cart__checkout{
+    border-left: 1px rgb(92, 91, 91) solid;
+    padding: 2rem;
+}
+.cart__checkout__btn__coupon{
+    background-color: rgb(255, 120, 143) !important;
+    border: none !important;
+}
+.cart__checkout__btn__coupon:hover{
+    opacity: 0.8;
+}
+.cart__checkout__coupon{
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+.cart__checkout__title__price{
+    opacity: 0.9;
+}
+.cart__checkout__title__price__total{
+    opacity: 1;
+    margin-top: 2rem;
+    background-color: gray;
+    color: white;
+    padding: 1rem;
+    font-size: 1.2rem;
+    border-radius: 5px;
+}
+.cart__checkout__btn{
+    background-color: rgb(1, 101, 1) !important;
+    font-size: 1.2rem !important;
+    padding: 1rem !important;
+    border: none !important;
+}
+.cart__checkout__btn:hover{
+    opacity: 0.8;
+}

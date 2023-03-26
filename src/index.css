@@ -8,6 +8,8 @@
   --blue: #4267b2;
   --transitionDuration: 0.6s;
 }
+@import "react-loading-skeleton/dist/skeleton.css";
+
 /* @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;1,500&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Macondo&family=Poppins:ital,wght@0,400;0,500;1,500&family=Roboto+Mono&family=Ubuntu+Mono&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100;300;400;500;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");

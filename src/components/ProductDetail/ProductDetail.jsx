@@ -22,7 +22,7 @@ const ProductDetail = () => {
     <Container>
       <div className="detail__product">
         <p className='main__title'>Chi tiết sản phẩm</p>
-        <Row xs ={1} xl={2} md={2}>
+        <Row xs={1} xl={2} md={2}>
           <Col>
             <img className='detail__product-img' src={thisProduct.image} />
           </Col>

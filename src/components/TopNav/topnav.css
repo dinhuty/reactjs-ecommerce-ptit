@@ -8,10 +8,12 @@
   height: 90px;
   transition: height 0.4s ease;
 }
-.linktext{
+
+.linktext {
   color: black;
   font-size: 1.3rem;
 }
+
 .headerx .container {
   height: 100%;
   padding-top: 0px;
@@ -50,13 +52,16 @@
   font-size: 1.2rem;
 }
 
-.header__menu__cart, .header__menu__cart2 {
+.header__menu__cart,
+.header__menu__cart2 {
   position: relative;
   margin: auto;
 }
-.active{
+
+.active {
   color: red !important;
 }
+
 .header__menu__cart .header__menu__count-cart {
   position: absolute;
   top: 50%;
@@ -66,6 +71,31 @@
   padding: 0.3rem;
   border-radius: 50%;
   color: white;
+}
+
+.search-form {
+  display: flex;
+}
+
+.search-form>button {
+  border: 0;
+  background-color: var(--blue);
+  color: var(--white);
+  margin-left: 1rem;
+  padding: 0.2rem;
+}
+.search-form>button:hover{
+  opacity: 0.8;
+}
+.search-form-text {
+  outline: 0;
+  border: 0;
+  background-color: white;
+  border-bottom: 2px solid rgba(88, 78, 0, 0.2);
+}
+
+.search-form-text:focus {
+  border-bottom: 2px solid var(--blue);
 }
 
 .header__menu__item {
@@ -151,10 +181,13 @@
   /* Creates triangle effect */
 
 }
-.dropdown-menu{
+
+.dropdown-menu {
   min-width: 150px;
 }
-.dropdown-menu, .dropdown-menu2 {
+
+.dropdown-menu,
+.dropdown-menu2 {
   display: none;
   /*Hides the content*/
   position: absolute;
@@ -167,9 +200,11 @@
   padding: 1rem 0;
   width: 100%;
 }
-.dropdown-menu2{
+
+.dropdown-menu2 {
   min-width: 200px;
 }
+
 .dropdown-menu i {
   padding: 0 1rem;
 }
@@ -184,12 +219,14 @@
 .dropdown-menu p:hover {
   background-color: var(--blue);
 }
-.dropdown__menu-item-account-user{
+
+.dropdown__menu-item-account-user {
   font-size: 1rem !important;
   opacity: 0.7;
   font-style: italic;
 
 }
-.dropdown__menu-itemxxx{
+
+.dropdown__menu-itemxxx {
   display: flex;
 }

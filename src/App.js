@@ -16,10 +16,10 @@ import Introduct from './components/Introduct/Introduct';
 function App() {
   return (
     <>
-      <SkeletonTheme>
+      <SkeletonTheme baseColor='#ededed' highlightColor='#faf7f7'>
         <ToastContainer></ToastContainer>
         {/* basename='/reactjs-ecommerce-ptit' */}
-        <BrowserRouter basename='/reactjs-ecommerce-ptit'  >
+        <BrowserRouter >
           <TopNav />
           <Routes>
             <Route exact path="/" element={<Home />} />

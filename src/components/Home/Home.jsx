@@ -31,7 +31,7 @@ const TopProducts = () => {
   const count_p = [1, 2, 3, 4, 5, 6, 7, 8, 9]
   return (
     <div className="container">
-      <h1 className='mai  '>Sản phẩm mới</h1>
+      <h1 className='main__title  '>Sản phẩm mới</h1>
       <Row xl={5} md={3} xs={2} className='g-4' >
         {
           data.products.slice(0, 5).map((product, index) => (

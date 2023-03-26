@@ -2,26 +2,28 @@ import './topnav.css'
 import React, { useRef, useEffect } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import logo from './logo.jpg'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { selectSucccess, selectToken, selectUser } from '../Redux/authSlice'
 import { toast } from 'react-toastify'
 import { Container, Navbar, Nav } from 'react-bootstrap'
+import { useState } from 'react'
+import axios from 'axios'
+import { getProduct, getProductRequest, getTotalPage } from '../Redux/productSlice'
 
 export const TopNav = () => {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     const cartList = useSelector((state) => state.cart)
     const isLogin = useSelector(selectSucccess)
-
+    const [textSearch, setTextSearch] = useState('')
     const userLogin = useSelector(selectUser)
     const handleLogout = () => {
         localStorage.removeItem('token')
         localStorage.removeItem('user')
-        // navigate('/')
         window.location.reload();
         toast("Đã đăng xuất")
     }
-    console.log(userLogin)
-    console.log(isLogin)
+
     const mainNav = [
         {
             display: "Trang chủ",
@@ -43,6 +45,32 @@ export const TopNav = () => {
     const { pathname } = useLocation()
     const activeNav = mainNav.findIndex(e => e.path === pathname)
     const headerRef = useRef(null)
+    const renderAfterCalled = useRef(false);
+
+    const hanldeSearch = (e) => {
+        e.preventDefault();
+        const getProData = async () => {
+            dispatch(getProductRequest());
+            axios.get('https://localhost:7164/api/Products/GetProduct', {
+                params: {
+                    key: textSearch,
+                    PageIndex: 1,
+                    PageSize: 10
+                }
+            })
+                .then(res => {
+                    dispatch(getProduct(res.data.products));
+                    dispatch(getTotalPage(res.data.totalPage))
+                    setTextSearch('')
+
+                })
+                .catch(err => {
+                    console.log(err)
+                });
+        }
+        getProData();
+    }
+
 
     useEffect(() => {
         window.addEventListener("scroll", () => {
@@ -87,7 +115,19 @@ export const TopNav = () => {
                 </Navbar.Collapse>
                 <div className="header__menu__right">
                     <div className="header__menu__item header__menu__right__item">
-                        <i className="fa-sharp fa-solid fa-magnifying-glass"></i>
+                        <form className='search-form' onSubmit={hanldeSearch}>
+                            <input
+                                className='search-form-text'
+                                type="text"
+                                value={textSearch}
+                                onChange={(e) => setTextSearch(e.target.value)}
+                                placeholder='Tìm kiếm sản phẩm'
+                                required
+                                onFocus={() => { navigate('./products') }}
+                            />
+                            <button type="submit">Tìm kiếm</button>
+                        </form>
+                        {/* <i className="fa-sharp fa-solid fa-magnifying-glass"></i> */}
                     </div>
                     <div className="header__menu__item header__menu__right__item">
                         <Link to="/cart">
