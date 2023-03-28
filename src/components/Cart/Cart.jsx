@@ -5,6 +5,7 @@ import { add, reduce, remove } from '../Redux/cartSlice'
 import './cart.css'
 const Cart = () => {
   const cartList = useSelector((state) => state.cart)
+  const [reducePrice, setReducePrice] = useState(0)
   const handleUpdateQuality = (product, qualityx, title, index) => {
     if (qualityx == 1 && title == 'reduce') {
       dispatch(remove(product.id))
@@ -14,22 +15,39 @@ const Cart = () => {
       dispatch(add(product))
     }
   }
+  // Tổng tiền sản phẩm
   const Total_price = (product, quantity) => {
     return (product.price * quantity)
   }
+
+  //Tổng tất cả sản phẩm
   const TotalPriceProduct = () => {
     var sum = 0;
     for (let i = 0; i < cartList.length; i++) {
       sum = sum + Total_price(cartList[i].product, cartList[i].quality)
-      
+
       console.log(Total_price(cartList[i].product, cartList[i].quality))
     }
-    return sum
+    return sum - reducePrice
   }
   const dispatch = useDispatch();
+
+  // Xóa sản phẩm
   const handleClickRemove = (id) => {
     dispatch(remove(id))
   }
+  const hanldeAddVoucher = (e) => {
+    e.preventDefault();
+    if (cartList.length > 0) {
+      if (TotalPriceProduct() < 100000) {
+        setReducePrice(TotalPriceProduct)
+      }
+      else {
+        setReducePrice(100000)
+      }
+    }
+  }
+  // if(cartList.length == 0) setReducePrice(0)
   return (
     <Container>
       <div className="cart">
@@ -76,16 +94,19 @@ const Cart = () => {
           <Col xl={4}>
             <div className='cart__checkout'>
               <Row className='cart__checkout__form'>
-                <Form.Label className='cart__checkout__coupon'>Coupon code:</Form.Label>
+                <Form.Label className='cart__checkout__coupon'>Coupon code(code: ok):</Form.Label>
                 <Col>
                   <Form.Control />
                 </Col>
                 <Col>
-                  <Button className='cart__checkout__btn__coupon'>Áp dụng</Button>
+                  <Button onClick={hanldeAddVoucher} className='cart__checkout__btn__coupon'>Áp dụng</Button>
                 </Col>
               </Row>
               <Row>
                 <p className='cart__checkout__title__price'>Tổng tiền sản phẩm: {TotalPriceProduct()}đ</p>
+              </Row>
+              <Row>
+                <p className='cart__checkout__title__price'>Giảm giá (Voucher): - {reducePrice}đ</p>
               </Row>
               <Row>
                 <p className='cart__checkout__title__price'>Phí vận chuyển: 0đ</p>

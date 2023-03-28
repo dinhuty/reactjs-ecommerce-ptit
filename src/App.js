@@ -11,7 +11,7 @@ import ProductDetail from './components/ProductDetail/ProductDetail';
 import { ToastContainer } from 'react-toastify';
 import { SkeletonTheme } from 'react-loading-skeleton';
 import 'react-toastify/dist/ReactToastify.css';
-import Introduct from './components/Introduct/Introduct';
+import Introduce from './components/Introduce/Introduce';
 
 function App() {
   return (
@@ -26,7 +26,7 @@ function App() {
             <Route path="/signIn" element={<SignIn />} />
             <Route path="/signUp" element={<SignUp />} />
             <Route path="/products" element={<Products />} />
-            <Route path="/introduce" element={<Introduct />} />
+            <Route path="/introduce" element={<Introduce />} />
             <Route path="/contact" element={<Products />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/products/:id" element={<ProductDetail />} />

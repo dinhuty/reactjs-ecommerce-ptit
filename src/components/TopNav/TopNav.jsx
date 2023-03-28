@@ -5,10 +5,11 @@ import logo from './logo.jpg'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectSucccess, selectToken, selectUser } from '../Redux/authSlice'
 import { toast } from 'react-toastify'
-import { Container, Navbar, Nav } from 'react-bootstrap'
+import { Container, Navbar, Nav, Dropdown } from 'react-bootstrap'
 import { useState } from 'react'
 import axios from 'axios'
 import { getProduct, getProductRequest, getTotalPage } from '../Redux/productSlice'
+import { authActions } from '../Redux/authSlice'
 
 export const TopNav = () => {
     const navigate = useNavigate()
@@ -17,10 +18,10 @@ export const TopNav = () => {
     const isLogin = useSelector(selectSucccess)
     const [textSearch, setTextSearch] = useState('')
     const userLogin = useSelector(selectUser)
+    const [showDropdown, setShowDropdown] = useState(false)
+
     const handleLogout = () => {
-        localStorage.removeItem('token')
-        localStorage.removeItem('user')
-        window.location.reload();
+        dispatch(authActions.isLogout())
         toast("Đã đăng xuất")
     }
 
@@ -86,7 +87,7 @@ export const TopNav = () => {
     }, []);
 
 
-
+    console.log(showDropdown)
     return (
         <Navbar className="headerx" fixed='top' ref={headerRef} expand="lg">
             <Container>
@@ -159,54 +160,6 @@ export const TopNav = () => {
                         <i class="fa-solid fa-caret-down"></i>
                     </div>
                 </div>
-                {/* <div className="header__menu">
-                    <div className="header__menu__left">
-                        {
-                            mainNav.map((item, index) => (
-                                <div
-                                    key={index}
-                                    className={`header__menu__item header__menu__left__item ${index === activeNav ? 'active' : ''}`}
-                                >
-                                    <Link to={item.path}>
-                                        <span>{item.display}</span>
-                                    </Link>
-                                </div>
-                            ))
-                        }
-                    </div>
-                    <div className="header__menu__right">
-                        <div className="header__menu__item header__menu__right__item">
-                            <i className="fa-sharp fa-solid fa-magnifying-glass"></i>
-                        </div>
-                        <div className="header__menu__item header__menu__right__item">
-                            <Link to="/cart">
-                                <i className="fa-solid fa-bag-shopping header__menu__cart ">
-                                    <p className='header__menu__count-cart'>{cartList.length}</p>
-                                </i>
-
-                            </Link>
-                        </div>
-                        <div className="header__menu__item header__menu__right__item header__menu__right__item__account ">
-                            <i className="header__account-dropdown fa-solid fa-user">
-
-                            </i>
-                            <div className={isLogin ? "dropdown-menu2 dropdown-menu" : "dropdown-menu"}>
-                                {
-                                    !isLogin ?
-                                        <>
-                                            <Link to='/signIn'><p className='dropdown__menu-item'><i className="fa-solid fa-right-to-bracket"></i>Đăng nhập</p></Link>
-                                            <Link to='/signUp'><p className='dropdown__menu-item'><i className="fa-solid fa-user-plus"></i>Đăng ký</p></Link>
-                                        </> :
-                                        <>
-                                            <Link to='/'><p className='dropdown__menu-item dropdown__menu-itemxxx'><i className="fa-solid fa-user"></i><p className='dropdown__menu-item-account-user'>{userLogin}</p></p></Link>
-                                            <div onClick={handleLogout} className='header__logout'><p className='dropdown__menu-item'><i className="fa-solid fa-user-plus"></i>Logout</p></div>
-                                        </>
-                                }
-                            </div>
-                            <i class="fa-solid fa-caret-down"></i>
-                        </div>
-                    </div>
-                </div> */}
             </Container>
         </Navbar>
     )

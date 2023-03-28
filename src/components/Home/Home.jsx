@@ -2,11 +2,13 @@ import React from 'react'
 import { useEffect, useState, useCallback } from 'react'
 import { Button, Card, Col, Container, Row } from 'react-bootstrap'
 import './home.css'
-import img_banner from '../../data/img_banner.jpg'
+import img_banner from '../../data/img_banner.png'
 import data from '../../data/db.json'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { add } from '../Redux/cartSlice'
+import axios from 'axios'
+import SkeletonCard from '../Products/SkeletonCard'
 
 export const Home = () => {
 
@@ -21,213 +23,89 @@ export const Home = () => {
 }
 const TopProducts = () => {
   const dispatch = useDispatch()
-  const handleAddtoCart = (product) =>{
+  const handleAddtoCart = (product) => {
     dispatch(add(product))
   }
   const navigate = useNavigate();
   const hanldeViewProduct = (productID) => {
     navigate('/products/' + productID)
   }
-  const count_p = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  const [loading, setLoading] = useState(true)
+  const [topProducts, setTopProducts] = useState([])
+
+  useEffect(() => {
+    axios.get('https://localhost:7164/api/Products/GetProduct', {
+      params: {
+        PageIndex: 1,
+        PageSize: 15
+      }
+    })
+      .then(res => {
+        setTopProducts(res.data.products)
+        setLoading(false)
+      })
+      .catch(err => {
+        console.log(err)
+      });
+  }, [])
+  console.log(loading)
+
   return (
-    <div className="container">
+    <div className="container homepage__products">
       <h1 className='main__title  '>Sản phẩm mới</h1>
-      <Row xl={5} md={3} xs={2} className='g-4' >
-        {
-          data.products.slice(0, 5).map((product, index) => (
-            <Col>
-              <Card as={Col} key={product.id} className='g-4 '>
+      <Row xl={4} md={3} xs={2} className='g-4 gird__product' >
+        {!loading ?
+          topProducts.slice(0, 4).map((product, index) => (
+            <Col key={index}>
+              <Card className='card__product'>
                 <div className='card__img' onClick={() => hanldeViewProduct(product.id)}>
-                  <Card.Img src={product.image} className=' cursor-btn' />
+                  <Card.Img src={`data:image/jpeg;base64,${product.im}`} className='img__product cursor-btn' />
                 </div>
                 <Card.Body>
-                  <Card.Title onClick={() => hanldeViewProduct(product.id)} className='cursor-btn'>{product.title}</Card.Title>
+                  <Card.Title onClick={() => hanldeViewProduct(product.id)} className='cursor-btn'>{product.name}</Card.Title>
                   <Card.Text>
                     <span>{product.price}<i class="fa-solid fa-dong-sign"></i></span>
                   </Card.Text>
 
                 </Card.Body>
-                <Link className='card__link__btn' >
-                  <Button onClick={() => handleAddtoCart(product)} className='card__btn' > Add to cart </Button>
+                <Link className='card__link__btn'>
+                  <Button className='card__btn' onClick={() => handleAddtoCart(product)}  > Add to cart </Button>
                 </Link>
               </Card>
             </Col>
           ))
-        }
+          : <SkeletonCard count={4} />}
       </Row>
+      <h1 className='main__title'>The Latest</h1>
+      <Overlay />
       <h1 className='main__title'>Sản phẩm bán chạy</h1>
-      <Row xl={5} md={3} xs={2} className='g-4 gird__product' >
-        {
-          data.products.map((product, index) => (
-            <Col>
-              <Card as={Col} key={product.id} className='card__product'>
+      <Row xl={4} md={3} xs={2} className='g-4 gird__product' >
+        {!loading ?
+          topProducts.map((product, index) => (
+            <Col key={index}>
+              <Card className='card__product'>
                 <div className='card__img' onClick={() => hanldeViewProduct(product.id)}>
-                  <Card.Img src={product.image} className='img__product cursor-btn' />
+                  <Card.Img src={`data:image/jpeg;base64,${product.im}`} className='img__product cursor-btn' />
                 </div>
                 <Card.Body>
-                  <Card.Title onClick={() => hanldeViewProduct(product.id)} className='cursor-btn'>{product.title}</Card.Title>
+                  <Card.Title onClick={() => hanldeViewProduct(product.id)} className='cursor-btn'>{product.name}</Card.Title>
                   <Card.Text>
                     <span>{product.price}<i class="fa-solid fa-dong-sign"></i></span>
                   </Card.Text>
 
                 </Card.Body>
-                <Link className='card__link__btn' >
-                  <Button onClick={() => handleAddtoCart(product)} className='card__btn' > Add to cart </Button>
+                <Link className='card__link__btn'>
+                  <Button className='card__btn' onClick={() => handleAddtoCart(product)}  > Add to cart </Button>
                 </Link>
               </Card>
             </Col>
           ))
-        }
+          : <SkeletonCard count={12} />}
       </Row>
     </div>
   );
 }
-const products = [
-  {
-    "id": 1,
-    "title": "Giày Nike Air Jordan 1 ",
-    "price": 1490000,
-    "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
-    "category": "men's clothing",
-    "image": "https://shopgiayreplica.com/wp-content/uploads/2022/05/air-jordan-retro-high-og-shadow-2-800x601.jpg",
-    "rating": {
-      "rate": 3.9,
-      "count": 120
-    }
-  },
-  {
-    "id": 2,
-    "title": "Giày Nike Air Force 1 ",
-    "price": 1090000,
-    "description": "Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.",
-    "category": "men's clothing",
-    "image": "https://shopgiayreplica.com/wp-content/uploads/2020/10/nike-air-force-1-low-replica-800x600.jpeg",
-    "rating": {
-      "rate": 4.1,
-      "count": 259
-    }
-  },
-  {
-    "id": 3,
-    "title": "Giày Nike Air Jordan 1 ",
-    "price": 899000,
-    "description": "great outerwear jackets for Spring/Autumn/Winter, suitable for many occasions, such as working, hiking, camping, mountain/rock climbing, cycling, traveling or other outdoors. Good gift choice for you or your family member. A warm hearted love to Father, husband or son in this thanksgiving or Christmas Day.",
-    "category": "men's clothing",
-    "image": "https://shopgiayreplica.com/wp-content/uploads/2020/09/Jordan-1-Retro-Black-White-1-800x600.jpg",
-    "rating": {
-      "rate": 4.7,
-      "count": 500
-    }
-  },
-  {
-    "id": 4,
-    "title": "Giày Nike Air",
-    "price": 1090000,
-    "description": "The color could be slightly different between on the screen and in practice. / Please note that body builds vary by person, therefore, detailed size information should be reviewed below on the product description.",
-    "category": "men's clothing",
-    "image": "https://shopgiayreplica.com/wp-content/uploads/2021/11/nike-air-force-1-low-an20-white.jpg",
-    "rating": {
-      "rate": 2.1,
-      "count": 430
-    }
-  },
-  {
-    "id": 5,
-    "title": "Giày Nike Dunk Low",
-    "price": 1290000,
-    "description": "From our Legends Collection, the Naga was inspired by the mythical water dragon that protects the ocean's pearl. Wear facing inward to be bestowed with love and abundance, or outward for protection.",
-    "category": "jewelery",
-    "image": "https://shopgiayreplica.com/wp-content/uploads/2021/03/Nike-Dunk-Low-Retro-White-Black-800x600.jpg",
-    "rating": {
-      "rate": 4.6,
-      "count": 400
-    }
-  },
-  {
-    "id": 6,
-    "title": "Giày Nike Dunk Disrupt 2 ",
-    "price": 1100000,
-    "description": "Satisfaction Guaranteed. Return or exchange any order within 30 days.Designed and sold by Hafeez Center in the United States. Satisfaction Guaranteed. Return or exchange any order within 30 days.",
-    "category": "jewelery",
-    "image": "https://shopgiayreplica.com/wp-content/uploads/2022/05/dunk-disrupt-2-pale-ivory-800x600.jpg",
-    "rating": {
-      "rate": 3.9,
-      "count": 70
-    }
-  },
-  {
-    "id": 7,
-    "title": "Giày Nike Air Jo",
-    "price": 1190000,
-    "description": "Classic Created Wedding Engagement Solitaire Diamond Promise Ring for Her. Gifts to spoil your love more for Engagement, Wedding, Anniversary, Valentine's Day...",
-    "category": "jewelery",
-    "image": "https://shopgiayreplica.com/wp-content/uploads/2022/03/air-jordan-1-mid-light-smoke-grey-v2-800x600.jpg",
-    "rating": {
-      "rate": 3,
-      "count": 400
-    }
-  },
-  {
-    "id": 8,
-    "title": "Giày Nike Air Jordan 1",
-    "price": 990000,
-    "description": "Rose Gold Plated Double Flared Tunnel Plug Earrings. Made of 316L Stainless Steel",
-    "category": "jewelery",
-    "image": "https://shopgiayreplica.com/wp-content/uploads/2021/04/jordan-1-low-panda-800x600.jpg",
-    "rating": {
-      "rate": 1.9,
-      "count": 100
-    }
-  },
-  {
-    "id": 9,
-    "title": "Giày Nike Air Jordan 1 ",
-    "price": 64,
-    "description": "USB 3.0 and USB 2.0 Compatibility Fast data transfers Improve PC Performance High Capacity; Compatibility Formatted NTFS for Windows 10, Windows 8.1, Windows 7; Reformatting may be required for other operating systems; Compatibility may vary depending on user’s hardware configuration and operating system",
-    "category": "electronics",
-    "image": "https://shopgiayreplica.com/wp-content/uploads/2021/10/air-jordan-1-low-smoke-grey-v3-800x599.png",
-    "rating": {
-      "rate": 3.3,
-      "count": 203
-    }
-  },
-  {
-    "id": 10,
-    "title": "Giày Nike Air Jordan 6 Retro",
-    "price": 109,
-    "description": "Easy upgrade for faster boot up, shutdown, application load and response (As compared to 5400 RPM SATA 2.5” hard drive; Based on published specifications and internal benchmarking tests using PCMark vantage scores) Boosts burst write performance, making it ideal for typical PC workloads The perfect balance of performance and reliability Read/write speeds of up to 535MB/s/450MB/s (Based on internal testing; Performance may vary depending upon drive capacity, host device, OS and application.)",
-    "category": "electronics",
-    "image": "https://shopgiayreplica.com/wp-content/uploads/2021/12/Jordan-6-Retro-Travis-Scott-British-Khaki-1-800x600.jpg",
-    "rating": {
-      "rate": 2.9,
-      "count": 470
-    }
-  },
-  {
-    "id": 11,
-    "title": "Giày Nike Air Jordan 3 ",
-    "price": 1190000,
-    "description": "3D NAND flash are applied to deliver high transfer speeds Remarkable transfer speeds that enable faster bootup and improved overall system performance. The advanced SLC Cache Technology allows performance boost and longer lifespan 7mm slim design suitable for Ultrabooks and Ultra-slim notebooks. Supports TRIM command, Garbage Collection technology, RAID, and ECC (Error Checking & Correction) to provide the optimized performance and enhanced reliability.",
-    "category": "electronics",
-    "image": "https://shopgiayreplica.com/wp-content/uploads/2021/11/Air-Jordan-3-Retro-Pure-White-800x600.jpg",
-    "rating": {
-      "rate": 4.8,
-      "count": 319
-    }
-  },
-  {
-    "id": 12,
-    "title": "Giày Nike Air Jordan 4 ",
-    "price": 1490000,
-    "description": "Expand your PS4 gaming experience, Play anywhere Fast and easy, setup Sleek design with high capacity, 3-year manufacturer's limited warranty",
-    "category": "electronics",
-    "image": "https://shopgiayreplica.com/wp-content/uploads/2021/11/jordan-4-white-oreo-4-like-auth.jpg",
-    "rating": {
-      "rate": 4.8,
-      "count": 400
-    }
-  }
-]
+
 const PolicyCard = () => {
   const policy = [
     {
@@ -287,14 +165,13 @@ const Slide = () => {
 
   return (
     <div className="slide container">
-      <Row xs={1} md={2} xl={2} className="align-items-center">
+      <Row xs={1} md={2} xl={2} className="align-items-center flex-column-reverse flex-md-row ">
         <Col className="slide__info" xl={8}>
           <div className="slide__info__title">
-            <span>Polo nữ Pima cao cấp</span>
+            <span>Air Jordan 1 Mid SE</span>
           </div>
           <div className="slide__info__desc">
-            <span>Nhắc đến sự đẳng cấp là không thể không nhắc đến dòng vải pima. Nó tạo nên chất lượng tốt nhất cho bất kỳ sản phẩm thời trang nào. Sợi vải pima dài và dày hơn sợi cotton thông thường gấp đôi nhờ công nghệ dệt tân tiến. Điều đó làm cho kết cấu áo polo chắc chắn, bền chặt, hạn chế tối đa xù lông, mềm mượt, bền màu, vô cùng đảm bảo sức khoẻ người dùng</span>
-
+            <span>This AJ1 is all about love. Self-love, love of the game, love for life—whatever the L-word evokes for you, this foray into floral footwear symbolises the passions that push you forwards. Want to get in the weeds? Just open the box: special-edition packaging names every flower in the bouquet, plus their hidden meanings. Or you can tear past the paper and let the beauty of the blooms gracing the collar and hangtag speak for themselves. Either way, you (and the whole world) are going to fall in love with your look.</span>
           </div>
           <div className="slide__info__btn">
             <span>Xem chi tiết</span>
@@ -310,5 +187,40 @@ const Slide = () => {
   );
 }
 
+const Overlay = () => {
 
-
+  return (
+    <Row xl={3} md={1} xs={1} className='g-4 align-items-center'>
+      <Col>
+        <div class="block block1 cursor-btn">
+          <div class="overlay"></div>
+          <div class="block--text">
+            <div class="text--head">Bắt đầu chạy</div>
+            <div class="text--quote">“Bạn vẫn coi mình là một người mới, hoặc muốn cảm thấy được trang bị đầy đủ cho lần chạy đầu tiên với một đôi giày được sản xuất để giúp bạn đi.”</div>
+            <div class="text--person">Walt Disney</div>
+          </div>
+        </div>
+      </Col>
+      <Col>
+        <div class="block block2 cursor-btn">
+          <div class="overlay"></div>
+          <div class="block--text">
+            <div class="text--head">Cuộc phiêu lưu</div>
+            <div class="text--quote">“Bạn muốn nâng cao khả năng tiếp thu bản chất của mình và vượt ra khỏi con đường bị đánh bại hơn hầu hết mọi người, vì vậy bạn cần có độ bám và độ ổn định tốt nhất của chúng tôi.”</div>
+            <div class="text--person">Walt Disney</div>
+          </div>
+        </div>
+      </Col>
+      <Col>
+        <div class="block block3 cursor-btn">
+          <div class="overlay"></div>
+          <div class="block--text">
+            <div class="text--head">Tốc độ</div>
+            <div class="text--quote">“Bạn thích rút ngắn thời gian chạy tính giờ hoặc bạn sẵn sàng thi đấu với một đôi giày nhẹ hơn để giúp bạn di chuyển với tốc độ cao.”</div>
+            <div class="text--person">Walt Disney</div>
+          </div>
+        </div>
+      </Col>
+    </Row>
+  );
+}

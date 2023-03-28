@@ -5,11 +5,11 @@ import { Row, Col, Card, Button } from 'react-bootstrap'
 import './skeleton.css'
 import './products.css'
 
-const SkeletonCard = () => {
-    const number = [1, 2, 3, 4, 5]
+const SkeletonCard = (props) => {
+    const number = [1, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15]
     return (
 
-        number.map((product, index) => (
+        number.slice(0,props.count).map((_, index) => (
 
             <Col>
                 <Skeleton key={index} className='card__btnx' ></Skeleton>

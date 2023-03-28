@@ -7,22 +7,6 @@ const initialState = {
     pageSize: 5,
     totalPage: 1
 }
-// export const getProdData = () => dispatch => {
-//     dispatch(getProductRequest());
-//     Axios.get('https://localhost:7164/api/Products/GetProduct', {
-//         params: {
-//           PageIndex: 1,
-//           PageSize: 3
-//         }      
-//       })
-//         .then(res => {
-//             dispatch(getProduct(res.data.products));
-//             console.log(res.data.products)
-//         })
-//         .catch(err => {
-//             console.log(err)
-//         });
-// };
 const productSlice = createSlice({
     name: 'productData',
     initialState,
@@ -34,7 +18,7 @@ const productSlice = createSlice({
             state.products = action.payload
             state.loading = false
         },
-        getTotalPage(state,action){
+        getTotalPage(state, action) {
             state.totalPage = action.payload
         }
 
