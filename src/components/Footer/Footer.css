@@ -1,6 +1,5 @@
-
-.footer-distributed{
-    box-shadow: 0 -5px 5px -5px #333;
+.footer-distributed {
+	box-shadow: 0 -5px 5px -5px #333;
 
 	box-sizing: border-box;
 	width: 100%;
@@ -10,50 +9,46 @@
 	padding: 55px 50px;
 }
 
-.footer-distributed .footer-left,
-.footer-distributed .footer-center,
-.footer-distributed .footer-right{
+.footer-left,
+.footer-center,
+.footer-right {
 	display: inline-block;
 	vertical-align: top;
 }
 
-/* Footer left */
-
-.footer-distributed .footer-left{
-	width: 40%;
-}
+/* Footer left 
 
 /* The company logo */
 
-.footer-distributed h3{
-	color:  var(--blue);
+.footer-distributed h3 {
+	color: var(--blue);
 	font: normal 36px 'Open Sans', cursive;
 	margin: 0;
 }
 
-.footer-distributed img{
-    height: 36px;
-    width: auto;
+.footer-distributed img {
+	height: 36px;
+	width: auto;
 }
 
 /* Footer links */
 
-.footer-distributed .footer-links{
-	color:  var(--black);
+.footer-distributed .footer-links {
+	color: var(--blue);
 	margin: 20px 0 12px;
 	padding: 0;
 }
 
-.footer-distributed .footer-links a{
-	display:inline-block;
+.footer-distributed .footer-links a {
+	display: inline-block;
 	line-height: 1.8;
-  font-weight:400;
+	font-weight: 400;
 	text-decoration: none;
-	color:  inherit;
+	color: inherit;
 }
 
-.footer-distributed .footer-company-name{
-	color:  #222;
+.footer-distributed .footer-company-name {
+	color: var(--blue);
 	font-size: 14px;
 	font-weight: normal;
 	margin: 0;
@@ -61,12 +56,12 @@
 
 /* Footer Center */
 
-.footer-distributed .footer-center{
+.footer-distributed .footer-center {
 	width: 35%;
 }
 
-.footer-distributed .footer-center i{
-	background-color:  var(--blue);
+.footer-distributed .footer-center i {
+	background-color: var(--blue);
 	color: var(--white);
 	font-size: 25px;
 	width: 38px;
@@ -78,81 +73,84 @@
 	vertical-align: middle;
 }
 
-.footer-distributed .footer-center i.fa-envelope{
+.footer-distributed .footer-center i.fa-envelope {
 	font-size: 17px;
 	line-height: 38px;
 }
 
-.footer-distributed .footer-center p{
+.footer-distributed .footer-center p {
 	display: inline-block;
-	color: var(--black);
-  font-weight:400;
+	color: var(--blue);
+
+	font-weight: 400;
 	vertical-align: middle;
-	margin:0;
+	margin: 0;
 }
 
-.footer-distributed .footer-center p span{
-	display:block;
+.footer-distributed .footer-center p span {
+	display: block;
 	font-weight: normal;
-	font-size:14px;
-	line-height:2;
+	font-size: 14px;
+	line-height: 2;
 }
 
-.footer-distributed .footer-center p a{
-	color:  var(--blue);
-	text-decoration: none;;
+.footer-distributed .footer-center p a {
+	color: var(--blue);
+	text-decoration: none;
+	;
 }
 
 .footer-distributed .footer-links a:before {
-  content: "|";
-  font-weight:300;
-  font-size: 20px;
-  left: 0;
-  color: var(--black);
-  display: inline-block;
-  padding-right: 5px;
+	content: "|";
+	font-weight: 300;
+	font-size: 20px;
+	left: 0;
+	color: var(--black);
+	display: inline-block;
+	padding-right: 5px;
 }
 
 .footer-distributed .footer-links .link-1:before {
-  content: none;
+	content: none;
 }
 
 /* Footer Right */
 
-.footer-distributed .footer-right{
+.footer-distributed .footer-right {
 	width: 20%;
 }
 
-.footer-distributed .footer-company-about{
+.footer-distributed .footer-company-about {
 	line-height: 20px;
-	color:  #92999f;
+	color: #92999f;
 	font-size: 13px;
 	font-weight: normal;
 	margin: 0;
 }
 
-.footer-distributed .footer-company-about span{
+.footer-distributed .footer-company-about span {
 	display: block;
-	color:  var(--black);
+	color: var(--black);
 	font-size: 14px;
 	font-weight: bold;
 	margin-bottom: 20px;
 }
 
-.footer-distributed .footer-icons{
+.footer-distributed .footer-icons {
 	margin-top: 25px;
 }
 
-.footer-distributed .footer-icons a{
+.footer-distributed .footer-icons a {
 	display: inline-block;
-	
+
 	cursor: pointer;
 	/* background-color:  var(--blue); */
-    margin: 1rem;
+	margin: 1rem;
 	color: var(--blue);
 	text-align: center;
 
 }
-.footer-distributed .footer-icons i{
-    font-size: 2rem;
+
+.footer-distributed .footer-icons i {
+	font-size: 2rem;
 }

@@ -5,7 +5,7 @@ import logo from './logo.jpg'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectSucccess, selectToken, selectUser } from '../Redux/authSlice'
 import { toast } from 'react-toastify'
-import { Container, Navbar, Nav, Dropdown } from 'react-bootstrap'
+import { Container, Navbar, Nav, Dropdown, Row, Col } from 'react-bootstrap'
 import { useState } from 'react'
 import axios from 'axios'
 import { getProduct, getProductRequest, getTotalPage } from '../Redux/productSlice'
@@ -50,6 +50,7 @@ export const TopNav = () => {
 
     const hanldeSearch = (e) => {
         e.preventDefault();
+        navigate('./products')
         const getProData = async () => {
             dispatch(getProductRequest());
             axios.get('https://localhost:7164/api/Products/GetProduct', {
@@ -89,9 +90,69 @@ export const TopNav = () => {
 
     console.log(showDropdown)
     return (
-        <Navbar className="headerx" fixed='top' ref={headerRef} expand="lg">
+        <Navbar className="nav__header navbar p-3" fixed='top' ref={headerRef} expand="lg">
             <Container>
+                {/* <Row>
+                    <form onSubmit={hanldeSearch}>
+                        <input type="search" placeholder="Search" className='search__bar' />
+                    </form>
+                </Row> */}
+                {/* <nav class="navbar navbar-expand-lg bg-white sticky-top navbar-light p-3 shadow-sm">
+                    <div class="container"> */}
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
                 <div className="header__logo">
+                    <Link to="/">
+                        <img className='navbar-logo' src={logo} alt="" />
+                    </Link>
+                </div>
+
+
+                <div className="mx-auto my-3 d-lg-none d-sm-block d-xs-block">
+                    <form onSubmit={hanldeSearch}>
+                        <input type="search" placeholder="Search" className='search__bar' />
+                    </form>
+                </div>
+                <div className=" collapse navbar-collapse bg-white" id="navbarNavDropdown">
+                    <div className="ms-auto d-none d-lg-block">
+                        <form onSubmit={hanldeSearch}>
+                            <input type="search" value={textSearch} onChange={(e) => setTextSearch(e.target.value)} placeholder="Search" className='search__bar' />
+                        </form>
+                    </div>
+                    <div className="navbar-nav ms-auto ">
+                        {
+                            mainNav.map((item, index) => (
+                                <div
+                                    key={index}
+                                    className='navbar__item'
+                                >
+                                    <Link to={item.path}>
+                                        <span className={` ${index === activeNav ? 'navbar__item-link active linktext' : 'navbar__item-link linktext'}`}>{item.display}</span>
+                                    </Link>
+                                </div>
+                            ))
+                        }
+
+                    </div>
+                    <ul className="navbar-nav ms-auto ">
+                        <li className="nav-item">
+                            <Link className="linktext mx-4" to="/cart"><i className="header__menu__cart fa-solid fa-cart-shopping me-1">
+                                <p className='header__menu__count-cart'>{cartList.length}</p>
+                            </i>Cart</Link>
+
+                        </li>
+                        <li class="nav-item">
+                            <Link className="linktext mx-4" to="/signin"><i className="fa-solid fa-circle-user me-1"></i> Account</Link>
+                        </li>
+                    </ul>
+                </div>
+                {/* </div>
+                </nav> */}
+                {/* start */}
+
+                {/* end */}
+                {/* <div className="header__logo">
                     <Link to="/">
                         <img src={logo} alt="" />
                     </Link>
@@ -127,9 +188,8 @@ export const TopNav = () => {
                                 onFocus={() => { navigate('./products') }}
                             />
                             <button type="submit">Tìm kiếm</button>
-                        </form>
-                        {/* <i className="fa-sharp fa-solid fa-magnifying-glass"></i> */}
-                    </div>
+                        </form> */}
+                {/* </div>
                     <div className="header__menu__item header__menu__right__item">
                         <Link to="/cart">
                             <p className='linktext  header__menu__cart'>
@@ -157,10 +217,10 @@ export const TopNav = () => {
                                     </>
                             }
                         </div>
-                        <i class="fa-solid fa-caret-down"></i>
+                        <i className="fa-solid fa-caret-down"></i>
                     </div>
-                </div>
+                </div> */}
             </Container>
-        </Navbar>
+        </Navbar >
     )
 }

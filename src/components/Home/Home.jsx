@@ -95,7 +95,7 @@ const TopProducts = () => {
 
                 </Card.Body>
                 <Link className='card__link__btn'>
-                  <Button className='card__btn' onClick={() => handleAddtoCart(product)}  > Add to cart </Button>
+                  <Button className='card__btn' onClick={() => hanldeViewProduct(product.id)}  > Xem chi tiết </Button>
                 </Link>
               </Card>
             </Col>

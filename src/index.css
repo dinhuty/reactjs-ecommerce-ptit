@@ -111,3 +111,7 @@ code {
 .App-link {
   color: #61dafb;
 }
+.linktext {
+  color: black;
+  font-size: 1.3rem;
+}

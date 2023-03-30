@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useLayoutEffect } from 'react'
 import { useEffect } from 'react'
 import './products.css'
 import { Link, useNavigate } from 'react-router-dom'
@@ -18,7 +18,6 @@ const Products = () => {
   const totalPage = useSelector((state) => state.productData.totalPage)
   const renderAfterCalled = useRef(false);
 
-
   const getProData = async () => {
     dispatch(getProductRequest());
     axios.get('https://localhost:7164/api/Products/GetProduct', {
@@ -35,16 +34,20 @@ const Products = () => {
         console.log(err)
       });
   }
-  console.log(totalPage)
-  useEffect(() => {
 
+  useEffect(() => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
     if (!renderAfterCalled.current) {
       getProData()
       renderAfterCalled.current = true;
     }
 
   }, [page]);
-  console.log(listProductPage)
+
   const handleAddtoCart = (product) => {
     dispatch(add(product))
   }

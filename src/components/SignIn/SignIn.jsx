@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import './signin.css'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import validate from '../Validate';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { authActions } from '../Redux/authSlice';
 import { selectToken } from '../Redux/authSlice';
 import { toast } from 'react-toastify';
@@ -11,9 +11,11 @@ import axios from './axios';
 import Loading from '../Loading/Loading';
 
 const SignIn = () => {
+
   const [focus, setFocus] = useState({});
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false)
+  const token = useSelector(selectToken)
   console.log("Loading" + loading)
   const [loginError, setLoginError] = useState('')
   const [data, setData] = useState({
@@ -29,11 +31,11 @@ const SignIn = () => {
     setData({ ...data, [event.target.name]: event.target.value });
   };
   useEffect(() => {
-    const token = localStorage.getItem('token')
     if (token) {
       navigate('/')
     }
   }, []);
+  
   useEffect(() => {
     setErrors(validate(data, "Login"));
   }, [data, focus]);
@@ -68,7 +70,7 @@ const SignIn = () => {
         setLoginError('')
         dispatch(authActions.getToken())
         dispatch(authActions.isLogin())
-        navigate('/')
+        navigate(-1)
         toast('Đăng nhập thành công')
 
       }).catch(errors => {
@@ -84,8 +86,8 @@ const SignIn = () => {
         setLoading(false)
 
       })
-
   };
+
   return (
     <div className='signin container'>
       <form className='sign-form' onSubmit={handleSubmit}>

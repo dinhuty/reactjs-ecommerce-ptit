@@ -130,6 +130,7 @@
   overflow: hidden;
   background-position: center;
   background-size: cover;
+  border-radius: 10px;
 }
 
 .block.block1 {
@@ -185,7 +186,7 @@
   font-size: 1.6rem;
   text-shadow: 0 13.36px 8.896px #c4b59d,0 -2px 1px #ffffff73;
   text-transform: uppercase;
-  color: var(--blue)
+  color: rgb(13, 214, 13)
 }
 
 .text--quote {

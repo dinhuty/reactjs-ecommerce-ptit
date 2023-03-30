@@ -8,6 +8,9 @@ const Cart = () => {
   const [reducePrice, setReducePrice] = useState(0)
   const handleUpdateQuality = (product, qualityx, title, index) => {
     if (qualityx == 1 && title == 'reduce') {
+      if(cartList.length == 0){
+        setReducePrice(0)
+      }
       dispatch(remove(product.id))
     } else if (title == 'reduce') {
       dispatch(reduce(product))
@@ -67,12 +70,12 @@ const Cart = () => {
                   <Col xl={6} md={6} xs={6}>
                     <Row className="align-items-center" >
                       <Col xl={4} md={4} xs={4}>
-                        <img className='detail__product-img' src={product_quality.product.image} />
+                        <img className='detail__product-img' src={`data:image/jpeg;base64,${product_quality.product.im}`}/>
 
                       </Col>
                       <Col xl={8} md={8} xs={8}>
                         <Row>
-                          <p className='cart__product__title'>{product_quality.product.title}</p>
+                          <p className='cart__product__title'>{product_quality.product.name}</p>
                         </Row>
                         <Row>
                           <p>Size:xl</p>
