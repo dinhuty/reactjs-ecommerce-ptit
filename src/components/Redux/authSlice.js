@@ -22,6 +22,7 @@ const auth = createSlice({
         isLogout: (state, action) => {
             localStorage.removeItem('token')
             localStorage.removeItem('user')
+            localStorage.removeItem('cart')
             state.user = null
             state.token = null
             state.isLogin = false

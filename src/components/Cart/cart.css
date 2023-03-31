@@ -52,7 +52,7 @@
     padding: 2rem;
 }
 .cart__checkout__btn__coupon{
-    background-color: rgb(255, 120, 143) !important;
+    background-color: red !important;
     border: none !important;
 }
 .cart__checkout__btn__coupon:hover{

@@ -107,12 +107,12 @@ const Products = () => {
                 <Card.Body>
                   <Card.Title onClick={() => hanldeViewProduct(product.id)} className='cursor-btn'>{product.name}</Card.Title>
                   <Card.Text>
-                    <span>{product.price}<i class="fa-solid fa-dong-sign"></i></span>
+                    <span>{product.price.toLocaleString('it-IT', { style: 'currency', currency: 'VND' })}</span>
                   </Card.Text>
 
                 </Card.Body>
-                <Link className='card__link__btn'>
-                  <Button className='card__btn' onClick={() => handleAddtoCart(product)}  > Add to cart </Button>
+                <Link className='card__link__btn' to={`/products/${product.id}`}>
+                  <Button className='card__btn' > Xem chi tiết </Button>
                 </Link>
               </Card>
             </Col>

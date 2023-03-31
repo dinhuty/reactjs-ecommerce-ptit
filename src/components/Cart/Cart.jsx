@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Button, Col, Container, Row, Table, Form } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { add, reduce, remove } from '../Redux/cartSlice'
@@ -8,9 +8,6 @@ const Cart = () => {
   const [reducePrice, setReducePrice] = useState(0)
   const handleUpdateQuality = (product, qualityx, title, index) => {
     if (qualityx == 1 && title == 'reduce') {
-      if(cartList.length == 0){
-        setReducePrice(0)
-      }
       dispatch(remove(product.id))
     } else if (title == 'reduce') {
       dispatch(reduce(product))
@@ -22,7 +19,9 @@ const Cart = () => {
   const Total_price = (product, quantity) => {
     return (product.price * quantity)
   }
-
+  useEffect(() => {
+    if (cartList.length == 0) setReducePrice(0)
+  },[cartList])
   //Tổng tất cả sản phẩm
   const TotalPriceProduct = () => {
     var sum = 0;
@@ -50,7 +49,6 @@ const Cart = () => {
       }
     }
   }
-  // if(cartList.length == 0) setReducePrice(0)
   return (
     <Container>
       <div className="cart">
@@ -58,19 +56,19 @@ const Cart = () => {
         <Row xl={2} xs={1} md={1} className='g-4'>
           <Col className='cart__list' xl={8}>
             <Row className='cart__list-header'>
-              <Col xl={6} md={6} xs={6}>Sản phẩm</Col>
+              <Col xl={5} md={5} xs={5}>Sản phẩm</Col>
               <Col xl={2} md={2} xs={2}>Số lượng</Col>
               <Col xl={2} md={2} xs={2}>Giá</Col>
-              <Col xl={1} md={1} xs={1}>Tổng</Col>
+              <Col xl={2} md={2} xs={2}>Tổng</Col>
               <Col xl={1} md={1} xs={1}></Col>
             </Row>
             {cartList.length > 0 ? cartList.map((product_quality, index) => (
               <div className="cart__item" key={index}>
                 <Row className="align-items-center" >
-                  <Col xl={6} md={6} xs={6}>
+                  <Col xl={5} md={5} xs={5}>
                     <Row className="align-items-center" >
                       <Col xl={4} md={4} xs={4}>
-                        <img className='detail__product-img' src={`data:image/jpeg;base64,${product_quality.product.im}`}/>
+                        <img className='detail__product-img' src={`data:image/jpeg;base64,${product_quality.product.im}`} />
 
                       </Col>
                       <Col xl={8} md={8} xs={8}>
@@ -85,8 +83,8 @@ const Cart = () => {
                   </Col>
                   <Col xl={2} md={2} xs={2} className="align-item-center"><p onClick={() => handleUpdateQuality(product_quality.product, product_quality.quality, 'reduce', index)}
                     className='cursor-btn cart__quality '>-</p><p className='cart__quanlity'>{product_quality.quality}</p><p onClick={() => handleUpdateQuality(product_quality.product, product_quality.quality, 'add', index)} className=' cart__quality cursor-btn'>+</p></Col>
-                  <Col xl={2} md={2} xs={2}>{product_quality.product.price}</Col>
-                  <Col xl={1} md={1} xs={1}>{Total_price(product_quality.product, product_quality.quality)}</Col>
+                  <Col xl={2} md={2} xs={2}>{product_quality.product.price.toLocaleString('it-IT', { style: 'currency', currency: 'VND' })}</Col>
+                  <Col xl={2} md={2} xs={2}>{Total_price(product_quality.product, product_quality.quality).toLocaleString('it-IT', { style: 'currency', currency: 'VND' })}</Col>
                   <Col xl={1} md={1} xs={1} className="align-self-center">
                     <Button size={6} className='cart__btn_remove' onClick={() => handleClickRemove(product_quality.product.id)}><p>Xoa</p></Button>
                   </Col>
@@ -106,16 +104,16 @@ const Cart = () => {
                 </Col>
               </Row>
               <Row>
-                <p className='cart__checkout__title__price'>Tổng tiền sản phẩm: {TotalPriceProduct()}đ</p>
+                <p className='cart__checkout__title__price'>Tổng tiền sản phẩm: {TotalPriceProduct().toLocaleString('it-IT', { style: 'currency', currency: 'VND' })}</p>
               </Row>
               <Row>
-                <p className='cart__checkout__title__price'>Giảm giá (Voucher): - {reducePrice}đ</p>
+                <p className='cart__checkout__title__price'>Giảm giá (Voucher): - {reducePrice.toLocaleString('it-IT', { style: 'currency', currency: 'VND' })}</p>
               </Row>
               <Row>
                 <p className='cart__checkout__title__price'>Phí vận chuyển: 0đ</p>
               </Row>
               <Row>
-                <p className='cart__checkout__title__price cart__checkout__title__price__total'>Tổng thanh toán: {TotalPriceProduct()}đ</p>
+                <p className='cart__checkout__title__price cart__checkout__title__price__total'>Tổng thanh toán: {TotalPriceProduct().toLocaleString('it-IT', { style: 'currency', currency: 'VND' })}</p>
               </Row>
               <Row>
                 <Button className='cart__checkout__btn'>Thanh toán</Button>

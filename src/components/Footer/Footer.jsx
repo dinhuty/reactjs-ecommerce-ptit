@@ -9,7 +9,6 @@ const Footer = () => {
 
 
                 <Col className="footer-left">
-
                     <img className='footer-logo' src={logo} alt="logo" />
 
                     <p className="footer-links">
@@ -30,7 +29,6 @@ const Footer = () => {
                 </Col>
 
                 <Col className="footer-center">
-
                     <div>
                         <i className="fa fa-map-marker"></i>
                         <p><span>123 HaNoi - VietNam </span> 123 Nguyen Trai, Ha Noi</p>
@@ -63,7 +61,6 @@ const Footer = () => {
                         <a href="#"><i className="fa-brands fa-youtube"></i></a>
 
                     </div>
-
                 </Col>
 
             </Row>

@@ -1,10 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const cart = JSON.parse(localStorage.getItem('cart'))
+const initialState = cart ? cart : []
+
 const cartSlice = createSlice({
     name: 'cart',
-    initialState: [],
+    initialState,
     reducers: {
-        add(state, action) {
+        add: (state, action) => {
             function check_arr(element, arr) {
                 for (let i = 0; i < arr.length; i++) {
                     if (arr[i].product.id == element.id) {
@@ -25,9 +28,9 @@ const cartSlice = createSlice({
 
                 }
             }
-            console.log(state)
+            localStorage.setItem('cart', JSON.stringify(state))
         },
-        reduce(state, action) {
+        reduce: (state, action) => {
             function check_arr(element, arr) {
                 for (let i = 0; i < arr.length; i++) {
                     if (arr[i].product.id == element.id) {
@@ -38,12 +41,20 @@ const cartSlice = createSlice({
             }
             let index = check_arr(action.payload, state)
             state[index].quality -= 1
-            console.log(state)
+            localStorage.setItem('cart', JSON.stringify(state))
+
         },
-        remove(state, action) {
-            return state.filter((item) => item.product.id !== action.payload);
+        remove: (state, action) => {
+            state = state.filter((item) => item.product.id !== action.payload);
+            localStorage.setItem('cart', JSON.stringify(state))
+            return state
+
         },
+        clearcart: (state, action) => {
+            state = []
+            return state
+        }
     },
 });
-export const { add, remove, reduce } = cartSlice.actions;
+export const { add, remove, reduce, clearcart } = cartSlice.actions;
 export default cartSlice.reducer;

@@ -38,7 +38,6 @@ const ProductDetail = () => {
       dispatch(add(product))
     }
   }
-  console.log("dang login",isLogin)
   return (
     <Container>
       <div className="detail__product">
@@ -53,7 +52,8 @@ const ProductDetail = () => {
             </div><br />
             <p></p>
             <p className='detail__product-desc'>{product.description}</p>
-            <p className='detail__product-price'>Giá: <p>{product.price}</p><i className="fa-solid fa-dong-sign"></i></p>
+
+            <p className='detail__product-price'>Giá: <p>{ product.price && product.price.toLocaleString('it-IT', { style: 'currency', currency: 'VND' })}</p></p>
             <Button onClick={handleClickAddItem} className="button__detail__add_cart cursor-btn"><p><i className="fa-sharp fa-solid fa-cart-shopping"></i>Add to cart</p></Button>
           </Col>
         </Row>

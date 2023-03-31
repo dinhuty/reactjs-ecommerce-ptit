@@ -14,6 +14,7 @@
 .footer-right {
 	display: inline-block;
 	vertical-align: top;
+	padding: 2rem;
 }
 
 /* Footer left 
@@ -31,7 +32,6 @@
 	width: auto;
 }
 
-/* Footer links */
 
 .footer-distributed .footer-links {
 	color: var(--blue);
@@ -52,12 +52,6 @@
 	font-size: 14px;
 	font-weight: normal;
 	margin: 0;
-}
-
-/* Footer Center */
-
-.footer-distributed .footer-center {
-	width: 35%;
 }
 
 .footer-distributed .footer-center i {
@@ -114,11 +108,7 @@
 	content: none;
 }
 
-/* Footer Right */
 
-.footer-distributed .footer-right {
-	width: 20%;
-}
 
 .footer-distributed .footer-company-about {
 	line-height: 20px;
@@ -144,7 +134,6 @@
 	display: inline-block;
 
 	cursor: pointer;
-	/* background-color:  var(--blue); */
 	margin: 1rem;
 	color: var(--blue);
 	text-align: center;
