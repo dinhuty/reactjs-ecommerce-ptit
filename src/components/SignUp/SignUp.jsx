@@ -3,7 +3,7 @@ import '../SignIn/signin.css'
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
 import validate from '../Validate';
-import { toast } from 'react-toastify';
+import { toast, Zoom } from 'react-toastify';
 import axios from '../SignIn/axios';
 import Loading from '../Loading/Loading';
 const SignUp = () => {
@@ -64,7 +64,13 @@ const SignUp = () => {
       .post("https://localhost:7164/api/Accounts/SignUpUser", { name, email, password, phoneNumber, passwordConfirmed, adress })
       .then(res => {
         navigate('/signIn')
-        toast('Đăng ký thành công')
+        toast.success('Đăng ký thành công', {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 1000,
+          pauseOnFocusLoss: true,
+          transition: Zoom,
+          role: "alert"
+        })
       }).catch(errors => {
         if (!errors?.response) {
           setSignUpError("No Server Response");

@@ -6,6 +6,7 @@ import validate from '../Validate';
 import { useDispatch, useSelector } from 'react-redux';
 import { authActions } from '../Redux/authSlice';
 import { selectToken } from '../Redux/authSlice';
+import { Zoom } from 'react-toastify';
 import { toast } from 'react-toastify';
 import axios from './axios';
 import Loading from '../Loading/Loading';
@@ -71,7 +72,13 @@ const SignIn = () => {
         dispatch(authActions.getToken())
         dispatch(authActions.isLogin())
         navigate(-1)
-        toast('Đăng nhập thành công')
+        toast.success('Đăng nhập thành công',{
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 1000,
+          pauseOnFocusLoss: true,
+          transition: Zoom,
+          role: "alert"
+        })
 
       }).catch(errors => {
         if (!errors?.response) {

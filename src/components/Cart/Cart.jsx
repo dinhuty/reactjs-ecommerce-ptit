@@ -6,13 +6,13 @@ import './cart.css'
 const Cart = () => {
   const cartList = useSelector((state) => state.cart)
   const [reducePrice, setReducePrice] = useState(0)
-  const handleUpdateQuality = (product, qualityx, title, index) => {
+  const handleUpdateQuality = (product, qualityx,size, title, index) => {
     if (qualityx == 1 && title == 'reduce') {
       dispatch(remove(product.id))
     } else if (title == 'reduce') {
       dispatch(reduce(product))
     } else {
-      dispatch(add(product))
+      dispatch(add({ product: product,sizeChoose:size }))
     }
   }
   // Tổng tiền sản phẩm
@@ -21,7 +21,7 @@ const Cart = () => {
   }
   useEffect(() => {
     if (cartList.length == 0) setReducePrice(0)
-  },[cartList])
+  }, [cartList])
   //Tổng tất cả sản phẩm
   const TotalPriceProduct = () => {
     var sum = 0;
@@ -76,13 +76,13 @@ const Cart = () => {
                           <p className='cart__product__title'>{product_quality.product.name}</p>
                         </Row>
                         <Row>
-                          <p>Size:xl</p>
+                          <p>Size:{product_quality.size}</p>
                         </Row>
                       </Col>
                     </Row>
                   </Col>
-                  <Col xl={2} md={2} xs={2} className="align-item-center"><p onClick={() => handleUpdateQuality(product_quality.product, product_quality.quality, 'reduce', index)}
-                    className='cursor-btn cart__quality '>-</p><p className='cart__quanlity'>{product_quality.quality}</p><p onClick={() => handleUpdateQuality(product_quality.product, product_quality.quality, 'add', index)} className=' cart__quality cursor-btn'>+</p></Col>
+                  <Col xl={2} md={2} xs={2} className="align-item-center"><p onClick={() => handleUpdateQuality(product_quality.product, product_quality.quality, product_quality.size, 'reduce', index)}
+                    className='cursor-btn cart__quality '>-</p><p className='cart__quanlity'>{product_quality.quality}</p><p onClick={() => handleUpdateQuality(product_quality.product, product_quality.quality, product_quality.size, 'add', index)} className=' cart__quality cursor-btn'>+</p></Col>
                   <Col xl={2} md={2} xs={2}>{product_quality.product.price.toLocaleString('it-IT', { style: 'currency', currency: 'VND' })}</Col>
                   <Col xl={2} md={2} xs={2}>{Total_price(product_quality.product, product_quality.quality).toLocaleString('it-IT', { style: 'currency', currency: 'VND' })}</Col>
                   <Col xl={1} md={1} xs={1} className="align-self-center">
