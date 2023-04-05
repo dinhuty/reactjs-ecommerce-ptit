@@ -29,7 +29,7 @@ root.render(
       <SkeletonTheme baseColor='#ededed' highlightColor='#faf7f7'>
         <ToastContainer limit={1}></ToastContainer>
         {/* basename='/reactjs-ecommerce-ptit' */}
-        <BrowserRouter basename='/reactjs-ecommerce-ptit'>
+        <BrowserRouter >
           <Routes>
             <Route path='/' element={<App />}>
               <Route path="" element={<Home />} />

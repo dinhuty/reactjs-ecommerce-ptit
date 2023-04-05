@@ -5,8 +5,7 @@
   /* --orange: #04AA6D; */
   --gray: #dadce0;
   --dark-gray: ##343a40;
-  /* --blue: #4267b2; */
-  --blue: var(--orange);
+  --blue: #4267b2;
   --transitionDuration: 0.6s;
   --toastify-icon-color-success: var(--blue) !important;
   --toastify-color-progress-success: #fff !important;

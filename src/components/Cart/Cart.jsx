@@ -8,9 +8,9 @@ const Cart = () => {
   const [reducePrice, setReducePrice] = useState(0)
   const handleUpdateQuality = (product, qualityx,size, title, index) => {
     if (qualityx == 1 && title == 'reduce') {
-      dispatch(remove(product.id))
+      dispatch(remove({idProduct: product.id,sizeProduct: size}))
     } else if (title == 'reduce') {
-      dispatch(reduce(product))
+      dispatch(reduce({ product: product,sizeChoose:size }))
     } else {
       dispatch(add({ product: product,sizeChoose:size }))
     }
@@ -35,8 +35,8 @@ const Cart = () => {
   const dispatch = useDispatch();
 
   // Xóa sản phẩm
-  const handleClickRemove = (id) => {
-    dispatch(remove(id))
+  const handleClickRemove = (id,size) => {
+    dispatch(remove({idProduct: id, sizeProduct: size}))
   }
   const hanldeAddVoucher = (e) => {
     e.preventDefault();
@@ -49,6 +49,7 @@ const Cart = () => {
       }
     }
   }
+
   return (
     <Container>
       <div className="cart">
@@ -62,31 +63,31 @@ const Cart = () => {
               <Col xl={2} md={2} xs={2}>Tổng</Col>
               <Col xl={1} md={1} xs={1}></Col>
             </Row>
-            {cartList.length > 0 ? cartList.map((product_quality, index) => (
+            {cartList.length > 0 ? cartList.map((product_quantity, index) => (
               <div className="cart__item" key={index}>
                 <Row className="align-items-center" >
                   <Col xl={5} md={5} xs={5}>
                     <Row className="align-items-center" >
                       <Col xl={4} md={4} xs={4}>
-                        <img className='detail__product-img' src={`data:image/jpeg;base64,${product_quality.product.im}`} />
+                        <img className='detail__product-img' src={`data:image/jpeg;base64,${product_quantity.product.im}`} />
 
                       </Col>
                       <Col xl={8} md={8} xs={8}>
                         <Row>
-                          <p className='cart__product__title'>{product_quality.product.name}</p>
+                          <p className='cart__product__title'>{product_quantity.product.name}</p>
                         </Row>
                         <Row>
-                          <p>Size:{product_quality.size}</p>
+                          <p className='cart__product__size'>Size: {product_quantity.size}</p>
                         </Row>
                       </Col>
                     </Row>
                   </Col>
-                  <Col xl={2} md={2} xs={2} className="align-item-center"><p onClick={() => handleUpdateQuality(product_quality.product, product_quality.quality, product_quality.size, 'reduce', index)}
-                    className='cursor-btn cart__quality '>-</p><p className='cart__quanlity'>{product_quality.quality}</p><p onClick={() => handleUpdateQuality(product_quality.product, product_quality.quality, product_quality.size, 'add', index)} className=' cart__quality cursor-btn'>+</p></Col>
-                  <Col xl={2} md={2} xs={2}>{product_quality.product.price.toLocaleString('it-IT', { style: 'currency', currency: 'VND' })}</Col>
-                  <Col xl={2} md={2} xs={2}>{Total_price(product_quality.product, product_quality.quality).toLocaleString('it-IT', { style: 'currency', currency: 'VND' })}</Col>
+                  <Col xl={2} md={2} xs={2} className="align-item-center quantity__cart_box"><p onClick={() => handleUpdateQuality(product_quantity.product, product_quantity.quality, product_quantity.size, 'reduce', index)}
+                    className='cursor-btn cart__quality '>-</p><p className='cart__quanlity'>{product_quantity.quality}</p><p onClick={() => handleUpdateQuality(product_quantity.product, product_quantity.quality, product_quantity.size, 'add', index)} className=' cart__quality cursor-btn'>+</p></Col>
+                  <Col xl={2} md={2} xs={2} className='cart__price'>{product_quantity.product.price.toLocaleString('it-IT', { style: 'currency', currency: 'VND' })}</Col>
+                  <Col xl={2} md={2} xs={2} className='cart__price'>{Total_price(product_quantity.product, product_quantity.quality).toLocaleString('it-IT', { style: 'currency', currency: 'VND' })}</Col>
                   <Col xl={1} md={1} xs={1} className="align-self-center">
-                    <Button size={6} className='cart__btn_remove' onClick={() => handleClickRemove(product_quality.product.id)}><p>Xoa</p></Button>
+                    <Button size={6} className='cart__btn_remove' onClick={() => handleClickRemove(product_quantity.product.id,product_quantity.size)}><p>Xoa</p></Button>
                   </Col>
                 </Row>
               </div>
