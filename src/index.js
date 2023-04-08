@@ -20,6 +20,8 @@ import 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './components/admin/Login';
 import Admin from './components/admin/Admin';
+import Order from './components/Cart/Order';
+import Checkout from './components/Cart/Checkout';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -29,7 +31,7 @@ root.render(
       <SkeletonTheme baseColor='#ededed' highlightColor='#faf7f7'>
         <ToastContainer limit={1}></ToastContainer>
         {/* basename='/reactjs-ecommerce-ptit' */}
-        <BrowserRouter >
+        <BrowserRouter basename='/reactjs-ecommerce-ptit'>
           <Routes>
             <Route path='/' element={<App />}>
               <Route path="" element={<Home />} />
@@ -39,13 +41,16 @@ root.render(
               <Route path="introduce" element={<Introduce />} />
               <Route path="contact" element={<Products />} />
               <Route path="cart" element={<Cart />} />
+              <Route path="cart/order" element={<Order />} />
+              <Route path="cart/checkout" element={<Checkout />} />
               <Route path="products/:id" element={<ProductDetail />} />
             </Route>
-            {/* <Route path='/admin' element={<Admin />}>
+            <Route path='/admin' element={<Admin />}>
               <Route path="login" element={<Login />} />
-            </Route> */}
-
-
+              {/* <Route path="productManagement" element={<ProductDB />} />
+              <Route path="userManagement" element={<UserDB />} />
+              <Route path="orderManagement" element={<Order />} /> */}
+            </Route>
           </Routes>
         </BrowserRouter>
       </SkeletonTheme>

@@ -133,7 +133,7 @@ export const TopNav = () => {
                                     className='navbar__item'
                                 >
                                     <Link to={item.path}>
-                                        <span className={` ${index === activeNav ? 'navbar__item-link active linktext' : 'navbar__item-link linktext'}`}>{item.display}</span>
+                                        <span className={` ${index === activeNav ? 'navbar__item-link active_nav linktext' : 'navbar__item-link linktext'}`}>{item.display}</span>
                                     </Link>
                                 </div>
                             ))
@@ -162,31 +162,34 @@ export const TopNav = () => {
                             {
                                 !isLogin ? <Dropdown.Menu className='dropdown-menu-end'>
                                     <Dropdown.Item>
-                                        <Link to='/signin' class="dropdown-item" >Đăng nhập</Link>
+                                        <Link to='/signin' className="dropdown-item" >Đăng nhập</Link>
                                     </Dropdown.Item>
                                     <Dropdown.Item>
-                                        <Link to='/signup' class="dropdown-item" >Đăng ký</Link>
+                                        <Link to='/signup' className="dropdown-item" >Đăng ký</Link>
                                     </Dropdown.Item>
                                     <Dropdown.Divider />
 
                                     <Dropdown.Item>
-                                        <Link to='/' class="dropdown-item" >Hỗ trợ</Link>
+                                        <Link to='/' className="dropdown-item" >Hỗ trợ</Link>
                                     </Dropdown.Item>
                                 </Dropdown.Menu>
                                     :
                                     <Dropdown.Menu className='dropdown-menu-end'>
                                         <Dropdown.Item>
-                                            <Link to='/' class="dropdown-item dropdown-item-account" ><i className="fa-solid fa-user"></i>{userLogin}</Link>
+                                            <Link to='/' className="dropdown-item dropdown-item-account" ><i className="fa-solid fa-user"></i>{userLogin}</Link>
                                         </Dropdown.Item>
                                         <Dropdown.Divider />
                                         <Dropdown.Item>
-                                            <Link to='/' class="dropdown-item" >Thông báo</Link>
+                                            <Link to='/cart/order' className="dropdown-item" >My Order</Link>
                                         </Dropdown.Item>
                                         <Dropdown.Item>
-                                            <Link to='/' class="dropdown-item" >Cài đặt</Link>
+                                            <Link to='/' className="dropdown-item" >Thông báo</Link>
                                         </Dropdown.Item>
                                         <Dropdown.Item>
-                                            <div onClick={handleLogout} class="dropdown-item" >Đăng xuất</div>
+                                            <Link to='/' className="dropdown-item" >Cài đặt</Link>
+                                        </Dropdown.Item>
+                                        <Dropdown.Item>
+                                            <div onClick={handleLogout} className="dropdown-item" >Đăng xuất</div>
                                         </Dropdown.Item>
                                     </Dropdown.Menu>
                             }

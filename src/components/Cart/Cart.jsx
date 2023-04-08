@@ -3,16 +3,20 @@ import { Button, Col, Container, Row, Table, Form } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { add, reduce, remove } from '../Redux/cartSlice'
 import './cart.css'
+import { useNavigate } from 'react-router-dom'
+
 const Cart = () => {
   const cartList = useSelector((state) => state.cart)
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
   const [reducePrice, setReducePrice] = useState(0)
-  const handleUpdateQuality = (product, qualityx,size, title, index) => {
+  const handleUpdateQuality = (product, qualityx, size, title, index) => {
     if (qualityx == 1 && title == 'reduce') {
-      dispatch(remove({idProduct: product.id,sizeProduct: size}))
+      dispatch(remove({ idProduct: product.id, sizeProduct: size }))
     } else if (title == 'reduce') {
-      dispatch(reduce({ product: product,sizeChoose:size }))
+      dispatch(reduce({ product: product, sizeChoose: size }))
     } else {
-      dispatch(add({ product: product,sizeChoose:size }))
+      dispatch(add({ product: product, sizeChoose: size }))
     }
   }
   // Tổng tiền sản phẩm
@@ -32,11 +36,10 @@ const Cart = () => {
     }
     return sum - reducePrice
   }
-  const dispatch = useDispatch();
 
   // Xóa sản phẩm
-  const handleClickRemove = (id,size) => {
-    dispatch(remove({idProduct: id, sizeProduct: size}))
+  const handleClickRemove = (id, size) => {
+    dispatch(remove({ idProduct: id, sizeProduct: size }))
   }
   const hanldeAddVoucher = (e) => {
     e.preventDefault();
@@ -49,7 +52,10 @@ const Cart = () => {
       }
     }
   }
-
+  // Handle checkout
+  const hanldeCheckout = () => {
+    navigate('./checkout')
+  }
   return (
     <Container>
       <div className="cart">
@@ -87,7 +93,7 @@ const Cart = () => {
                   <Col xl={2} md={2} xs={2} className='cart__price'>{product_quantity.product.price.toLocaleString('it-IT', { style: 'currency', currency: 'VND' })}</Col>
                   <Col xl={2} md={2} xs={2} className='cart__price'>{Total_price(product_quantity.product, product_quantity.quality).toLocaleString('it-IT', { style: 'currency', currency: 'VND' })}</Col>
                   <Col xl={1} md={1} xs={1} className="align-self-center">
-                    <Button size={6} className='cart__btn_remove' onClick={() => handleClickRemove(product_quantity.product.id,product_quantity.size)}><p>Xoa</p></Button>
+                    <Button size={6} className='cart__btn_remove' onClick={() => handleClickRemove(product_quantity.product.id, product_quantity.size)}><p>Xoa</p></Button>
                   </Col>
                 </Row>
               </div>
@@ -117,7 +123,7 @@ const Cart = () => {
                 <p className='cart__checkout__title__price cart__checkout__title__price__total'>Tổng thanh toán: {TotalPriceProduct().toLocaleString('it-IT', { style: 'currency', currency: 'VND' })}</p>
               </Row>
               <Row>
-                <Button className='cart__checkout__btn'>Thanh toán</Button>
+                <Button disabled={cartList.length === 0} className='cart__checkout__btn' onClick={hanldeCheckout}>Checkout</Button>
               </Row>
             </div>
           </Col>

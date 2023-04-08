@@ -23,51 +23,6 @@ const ProductDetail = () => {
   const [sizeChoose, setSizeChoose] = useState('')
   const [sizeShoes,setSizeShoes] = useState([])
  
-    // {
-    //   "sizeProduct": "35",
-    //   "qty": 30
-    // },
-    // {
-    //   "sizeProduct": "36",
-    //   "qty": 10
-    // },
-    // {
-    //   "sizeProduct": "37",
-    //   "qty": 30
-    // },
-    // {
-    //   "sizeProduct": "38",
-    //   "qty": 30
-    // },
-    // {
-    //   "sizeProduct": "39",
-    //   "qty": 30
-    // },
-    // {
-    //   "sizeProduct": "40",
-    //   "qty": 10
-    // },
-    // {
-    //   "sizeProduct": "41",
-    //   "qty": 30
-    // },
-    // {
-    //   "sizeProduct": "42",
-    //   "qty": 30
-    // },
-    // {
-    //   "sizeProduct": "43",
-    //   "qty": 10
-    // },
-    // {
-    //   "sizeProduct": "44",
-    //   "qty": 30
-    // },
-    // {
-    //   "sizeProduct": "45",
-    //   "qty": 30
-    // }
-  // ]
   useEffect(() => {
     window.scroll({
       top: 0,

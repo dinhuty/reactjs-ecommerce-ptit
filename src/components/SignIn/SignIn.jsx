@@ -45,9 +45,6 @@ const SignIn = () => {
     setFocus({ ...focus, [event.target.name]: true });
   };
 
-  const sleep = (milliseconds) => {
-    return new Promise(resolve => setTimeout(resolve, milliseconds))
-  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();

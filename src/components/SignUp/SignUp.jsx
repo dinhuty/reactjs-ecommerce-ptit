@@ -19,6 +19,7 @@ const SignUp = () => {
     Address: "",
 
   });
+  console.log(data)
   const [loading, setLoading] = useState(false)
 
   const navigate = useNavigate()

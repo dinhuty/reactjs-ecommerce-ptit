@@ -1,0 +1,72 @@
+.checkout {
+    padding: 180px 1rem;
+}
+
+.checkout__info {
+    border: 1px solid #ccc;
+    padding: 2rem;
+}
+
+.checkout__info-title, .checkout__info-order {
+    font-size: 1.5rem;
+    color: var(--blue);
+    font-weight: 600;
+    font-style: italic;
+}
+
+.checkout__info-desc>label {
+    font-size: 1rem;
+    padding: 1rem 0rem 0.2rem 0rem;
+    font-weight: 500;
+    color: red;
+}
+
+.checkout__order {
+    /* border: 1px solid #ccc; */
+    padding: 2rem;
+}
+.checkout__order-btn{
+    padding: 0.6rem 1.2rem !important;
+    background-color: var(--blue) !important;
+    font-size: 1.2rem;
+    border: none !important;
+}
+.checkout__info-desc select{
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--blue);
+    border-radius: 5px;
+}
+.checkout__info-desc select:disabled{
+    border: 1px solid #ccc;
+}
+.checkout__info-desc select:focus{
+    border: 1px solid var(--blue);
+}
+.checkout__adress{
+    margin-bottom: 1rem;
+}
+.checkout__info-desc input{
+    margin-top: 1rem;
+}
+.checkout__address_final{
+    margin-top: 1rem;
+}
+.checkout__adress__final{
+    padding: 2rem;
+}
+.checkout__adress__final>p{
+    margin-bottom: 0.2rem;
+    font-weight: 500;
+    font-style: italic;
+}
+.checkout__info-order p{
+    font-weight: 500;
+}
+.checkout__order-price{
+    font-weight: 500;
+    margin-bottom: 0.2rem;
+}
+.checkout__order-price.total__price{
+    padding-top: 1rem !important;
+    font-size: 1.1rem;
+}
