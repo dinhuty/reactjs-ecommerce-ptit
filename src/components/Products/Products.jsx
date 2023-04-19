@@ -104,6 +104,7 @@ const Products = () => {
                 <div className='card__img' onClick={() => hanldeViewProduct(product.id)}>
                   <Card.Img src={`data:image/jpeg;base64,${product.im}`} className='img__product cursor-btn' />
                 </div>
+                {console.log(product.im)}
                 <Card.Body>
                   <Card.Title onClick={() => hanldeViewProduct(product.id)} className='cursor-btn'>{product.name}</Card.Title>
                   <Card.Text>

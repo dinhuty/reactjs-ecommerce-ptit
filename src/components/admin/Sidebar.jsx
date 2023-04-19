@@ -1,6 +1,6 @@
 import React from 'react'
 import { DriveEtaRounded, FactCheck } from '@mui/icons-material'
-import { NavLink, useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import './sidebar.css'
 import { FaBeer, FaUserAlt, FaWeightHanging } from 'react-icons/fa';
 import { RiLineChartFill } from "react-icons/ri";
@@ -33,7 +33,7 @@ const Sidebar = () => {
     const activeNav = menuItem.findIndex(e => e.path === pathname)
     console.log(activeNav)
     return (
-        <div className='containerx' >
+        <div className='container' >
             <div className="sidebar">
                 <div className="sidebar_top">
                     <h1 className="logo">Logo</h1>
@@ -41,11 +41,11 @@ const Sidebar = () => {
                 <div className="sidebar_menu">
                     {
                         menuItem.map((item, index) => (
-                            <NavLink to={item.path} key={index} className={index === activeNav ? 'sidebar_link active_side' : 'sidebar_link'}>
+                            <Link to={item.path} key={index} className={index === activeNav ? 'sidebar_link active_side' : 'sidebar_link'}>
                                 {console.log(index === activeNav, "cua", item.path)}
                                 <div className="sidebar_icon">{item.icon}</div>
                                 <div className="sidebar_linktext">{item.name}</div>
-                            </NavLink>
+                            </Link>
                         ))
                     }
                 </div>

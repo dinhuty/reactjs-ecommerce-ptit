@@ -1,10 +1,11 @@
 import React from 'react'
+import { Container } from 'react-bootstrap'
 
 const UserDB = () => {
   return (
-    <div>
+    <Container className='useDB'>
       <h1>User Page</h1>
-    </div>
+    </Container>
   )
 }
 
