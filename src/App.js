@@ -1,25 +1,29 @@
 import React from 'react'
-import { TopNav } from './components/TopNav/TopNav';
 import { BrowserRouter, Routes, Route, Router, Outlet } from 'react-router-dom';
-import { Home } from './components/Home/Home';
-import Footer from './components/Footer/Footer';
-import SignIn from './components/SignIn/SignIn';
-import SignUp from './components/SignUp/SignUp';
-import Products from './components/Products/Products';
-import Cart from './components/Cart/Cart';
-import ProductDetail from './components/ProductDetail/ProductDetail';
-import { ToastContainer } from 'react-toastify';
-import { SkeletonTheme } from 'react-loading-skeleton';
-import 'react-toastify/dist/ReactToastify.css';
-import Introduce from './components/Introduce/Introduce';
+import { Fragment } from 'react';
+import { publicRouter } from './routers/router'
+import DefaultLayout from './Layouts/DefaultLayout/DefaultLayout'
+
 
 function App() {
   return (
-    <>
-      <TopNav />
-      <Outlet />
-      <Footer />
-    </>
+    <BrowserRouter>
+      <div className="app">
+        <Routes>
+          {
+            publicRouter.map((route, index) => {
+              let Layout = DefaultLayout
+              if (route.layout === null) Layout = Fragment
+              else if (route.layout) {
+                Layout = route.layout
+              }
+              const Page = route.component
+              return <Route key={index} path={route.path} element={<Layout><Page /></Layout>} />
+            })
+          }
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 

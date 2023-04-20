@@ -1,0 +1,12 @@
+.order{
+    padding: 60px 0px;
+    min-height: 100vh;
+}
+.order-main{
+    padding: 5px 20px;
+}
+
+.order-address{
+    color: orangered;
+    font-weight: 500;
+}

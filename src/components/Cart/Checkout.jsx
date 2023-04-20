@@ -121,8 +121,8 @@ const Checkout = () => {
                 } else if (errors.response?.status === 400) {
                     toast("error")
 
-                } else if (errors.response?.status === 401) {
-                    toast("error")
+                } else if (errors.response?.status === 430) {
+                    toast("Hết size rồi !!!!")
 
                 } else {
                     toast("error")

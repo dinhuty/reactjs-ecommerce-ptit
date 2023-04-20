@@ -3,14 +3,13 @@ import React, { useRef, useEffect } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import logo from './logo.jpg'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectSucccess, selectToken, selectUser } from '../Redux/authSlice'
 import { toast, Zoom } from 'react-toastify'
 import { Container, Navbar, Nav, Dropdown, Row, Col, Menu } from 'react-bootstrap'
 import { useState } from 'react'
 import axios from 'axios'
-import { getProduct, getProductRequest, getTotalPage } from '../Redux/productSlice'
-import { authActions } from '../Redux/authSlice'
-import { clearcart, add } from '../Redux/cartSlice'
+import { getProduct, getProductRequest, getTotalPage } from '../../../components/Redux/productSlice'
+import { authActions, selectSucccess, selectUser } from '../../../components/Redux/authSlice'
+import { clearcart, add } from '../../../components/Redux/cartSlice'
 
 export const TopNav = () => {
     const navigate = useNavigate()
@@ -57,14 +56,14 @@ export const TopNav = () => {
 
     const hanldeSearch = (e) => {
         e.preventDefault();
-        navigate('./products')
+        navigate('/products')
         const getProData = async () => {
             dispatch(getProductRequest());
             axios.get('https://localhost:7164/api/Products/GetProduct', {
                 params: {
                     key: textSearch,
                     PageIndex: 1,
-                    PageSize: 10
+                    PageSize: 30
                 }
             })
                 .then(res => {
@@ -118,11 +117,11 @@ export const TopNav = () => {
                 <div className=" collapse navbar-collapse bg-white" id="navbarNavDropdown">
                     <div className="ms-auto d-none d-lg-block">
                         <form onSubmit={hanldeSearch}>
-                        <input type="search" onChange={(e) => {
-                            setTextSearch(e.target.value)
-                        }
-                        }
-                        value={textSearch}   placeholder="Tìm kiếm sản phẩm" className='search__bar' />
+                            <input type="search" onChange={(e) => {
+                                setTextSearch(e.target.value)
+                            }
+                            }
+                                value={textSearch} placeholder="Tìm kiếm sản phẩm" className='search__bar' />
                         </form>
                     </div>
                     <div className="navbar-nav ms-auto ">
@@ -151,7 +150,7 @@ export const TopNav = () => {
                         <Dropdown>
                             <Dropdown.Toggle variant="none" id="dropdown" className='navbar__dropdown__toggle'>
                                 <img
-                                    src={!isLogin ? "https://w7.pngwing.com/pngs/535/466/png-transparent-google-account-microsoft-account-login-email-gmail-email-miscellaneous-text-trademark-thumbnail.png" : "https://scontent.fhan5-2.fna.fbcdn.net/v/t39.30808-6/293331698_1513112562420236_7638095576350329681_n.jpg?stp=cp6_dst-jpg&_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=6RW9felPO-sAX9ZRzjA&_nc_ht=scontent.fhan5-2.fna&oh=00_AfBFtj0rkNb4QxPJ2e8l31mA1tqECIPS-dC-_8gBor96LA&oe=642BE41D"}
+                                    src={!isLogin ? "https://w7.pngwing.com/pngs/535/466/png-transparent-google-account-microsoft-account-login-email-gmail-email-miscellaneous-text-trademark-thumbnail.png" : "https://lh3.googleusercontent.com/a/AGNmyxaaijkc0gEM3Uj5OnNktNgAOmaJwCM0Ywk3p5is0A=s360"}
                                     class="rounded-circle"
                                     height="28"
                                     alt="avatar"

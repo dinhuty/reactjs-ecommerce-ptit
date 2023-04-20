@@ -28,7 +28,7 @@ const Products = () => {
     })
       .then(res => {
         dispatch(getProduct(res.data.products));
-        dispatch(getTotalPage(res.data.totalPage))
+        dispatch(getTotalPage(res.data.totalPages))
       })
       .catch(err => {
         console.log(err)
@@ -59,6 +59,7 @@ const Products = () => {
 
   // paginate
   let maxPages = totalPage
+  console.log(totalPage)
   let items = []
   let leftSide = page - 1
   if (leftSide <= 0) leftSide = 1
@@ -104,7 +105,6 @@ const Products = () => {
                 <div className='card__img' onClick={() => hanldeViewProduct(product.id)}>
                   <Card.Img src={`data:image/jpeg;base64,${product.im}`} className='img__product cursor-btn' />
                 </div>
-                {console.log(product.im)}
                 <Card.Body>
                   <Card.Title onClick={() => hanldeViewProduct(product.id)} className='cursor-btn'>{product.name}</Card.Title>
                   <Card.Text>
