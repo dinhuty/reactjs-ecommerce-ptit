@@ -69,9 +69,9 @@ function Order() {
                 )) : <h5>Trống</h5>
             }
           </Tab>
-          <Tab eventKey="profile" title="Chờ vẫn chuyển">
+          <Tab eventKey="profile" title="Đang vận chuyển">
           </Tab>
-          <Tab eventKey="longer-tab" title="Chờ thanh toán">
+          <Tab eventKey="longer-tab" title="Đã giao hàng">
           </Tab>
           <Tab eventKey="contact" title="Đơn hủy" >
           </Tab>

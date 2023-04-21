@@ -196,8 +196,8 @@ const Checkout = () => {
     return (
         <Container>
             <div className='checkout'>
-                <Row xs={1} md={1} xl={2} className='g-4'>
-                    <Col xl={7} className='checkout__info'>
+                <Row xs={1} md={1} xl={2} className=''>
+                    <Col xl={7} className='checkout__info c-flex gap-2 pl-1'  >
                         <p className='checkout__info-title'>Kiểm tra thông tin:</p>
                         <div className='checkout__adress__final'>
                             <p>Người nhận: {data.customerName}</p>
@@ -306,11 +306,11 @@ const Checkout = () => {
                                     </tr>
                                 ))}
                             </tbody>
-                            <br />
-                            <p className='checkout__order-price'>Tổng tiền sản phẩm: {TotalPriceProduct().toLocaleString('it-IT', { style: 'currency', currency: 'VND' })}</p>
-                            <p className='checkout__order-price'>Phí vận chuyển: 0đ</p>
-                            <p className='checkout__order-price total__price'>Tổng thanh toán: {TotalPriceProduct().toLocaleString('it-IT', { style: 'currency', currency: 'VND' })}</p>
                         </Table>
+                        <br />
+                        <p className='checkout__order-price'><p>Tổng tiền sản phẩm: </p><p>{TotalPriceProduct().toLocaleString('it-IT', { currency: 'VND' })}đ</p></p>
+                        <p className='checkout__order-price'><p>Phí vận chuyển: </p><p>0đ</p></p>
+                        <p className='checkout__order-price total__price'><p>Tổng thanh toán: </p><p>{TotalPriceProduct().toLocaleString('it-IT', { currency: 'VND' })}đ</p></p>
                         <Button
                             className='checkout__order-btn'
                             disabled={isLoading}

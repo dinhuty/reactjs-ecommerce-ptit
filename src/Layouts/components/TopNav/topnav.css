@@ -1,8 +1,9 @@
-.container_nav{
+.container_nav {
   height: 100% !important;
 }
+
 .nav__header {
-  background-color: var(--white);
+  background-color: #fff;
   color: black !important;
   top: 0;
   left: 0;
@@ -10,7 +11,7 @@
   z-index: 99;
   height: 90px;
   opacity: 1 !important;
-  transition: height 0.4s ease;
+  transition: height 0.5s ease-in-out;
 }
 
 .navbar-logo {
@@ -26,13 +27,14 @@
 
 .search__bar {
   width: 100%;
-  padding: 9px 10px 9px 32px;
-  background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+  padding: 1.2rem 1.2rem 1.2rem 32px;
+  background: #ffffff url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
   border: solid 1px #ccc;
 
-  -webkit-border-radius: 10em;
+  /* -webkit-border-radius: 10em;
   -moz-border-radius: 10em;
-  border-radius: 10em;
+  border-radius: 10em; */
+  border-radius: 1rem;
 
   -webkit-transition: all .5s;
   -moz-transition: all .5s;
@@ -43,6 +45,7 @@
   /* width: 300px; */
   background-color: #fff;
   border-color: var(--blue);
+  transform: scale(1.15);
   outline: none;
   -webkit-box-shadow: 0 0 5px rgba(109, 207, 246, .5);
   -moz-box-shadow: 0 0 5px rgba(109, 207, 246, .5);
@@ -51,7 +54,7 @@
 
 .shrink {
   height: 70px;
-  box-shadow: rgba(70, 74, 79, 0.5) 0px 8px 24px;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
   z-index: 100;
 }
 
@@ -70,29 +73,42 @@
 }
 
 
-.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
+.btn-check:checked+.btn,
+.btn.active,
+.btn.show,
+.btn:first-child:active,
+:not(.btn-check)+.btn:active {
 
   border-color: var(--white) !important;
 }
+
 .navbar__dropdown__toggle {
   border-color: none !important;
 
 }
-.dropdown-item-account{
+
+.dropdown-item-account {
   font-style: italic;
 }
-.dropdown-item-account>i{
+
+.dropdown-item-account>i {
   padding-right: 1rem;
 }
-.dropdown-item{
+
+.dropdown-item {
   font-size: 1.2rem !important;
 }
-.dropdown-item:active{
+
+.dropdown-item:active {
   background-color: var(--blue) !important;
   color: var(--white) !important;
 }
 
-.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active{
+.btn-check:checked+.btn,
+.btn.active,
+.btn.show,
+.btn:first-child:active,
+:not(.btn-check)+.btn:active {
   border-color: none !important;
 
 }

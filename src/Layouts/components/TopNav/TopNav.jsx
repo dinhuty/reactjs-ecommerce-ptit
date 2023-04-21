@@ -131,9 +131,14 @@ export const TopNav = () => {
                                     key={index}
                                     className='navbar__item'
                                 >
-                                    <Link to={item.path}>
-                                        <span className={` ${index === activeNav ? 'navbar__item-link active_nav linktext' : 'navbar__item-link linktext'}`}>{item.display}</span>
-                                    </Link>
+                                    {
+                                        pathname === "/" ? <Link to={item.path}>
+                                            <span className={` ${(index === 0) ? 'navbar__item-link active_nav linktext' : 'navbar__item-link linktext'}`}>{item.display}</span>
+                                        </Link> :
+                                            <Link to={item.path}>
+                                                <span className={` ${(pathname.includes(item.path) && item.path !== "/") ? 'navbar__item-link active_nav linktext' : 'navbar__item-link linktext'}`}>{item.display}</span>
+                                            </Link>
+                                    }
                                 </div>
                             ))
                         }
