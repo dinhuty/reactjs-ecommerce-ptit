@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import './products.css'
 import { Link, useNavigate } from 'react-router-dom'
 import data from '../../data/db.json'
+import { Select, Space } from 'antd';
 import { Button, Card, Col, Row } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { add } from '../Redux/cartSlice'
@@ -94,9 +95,24 @@ const Products = () => {
     }
   }
 
+  const handleSort = (value) => {
+    console.log(`selected ${value}`);
+  };
   return (
     <div className='products container'>
       <h1 className='main__title product__title'>Tất cả sản phẩm</h1>
+      <div className="sort-product">
+        <Select
+          defaultValue="none"
+          style={{ width: 120 }}
+          onChange={handleSort}
+          options={[
+            { value: 'none', label: 'Sắp xếp giá' },
+            { value: 't', label: 'Tăng' },
+            { value: 'g', label: 'Giảm' },
+          ]}
+        />
+      </div>
       <Row xl={4} md={3} xs={2} className='g-4 gird__product' >
         {!loading ?
           listProductPage.map((product, index) => (

@@ -145,7 +145,7 @@ export const TopNav = () => {
 
                     </div>
                     <ul className="navbar-nav ms-auto ">
-                        <li className="navbar__cart">
+                        <li className = {`${pathname === "/cart"? "navbar__cart active_nav" : "navbar__cart"}`}>
                             <Link className="linktext mx-4" to="/cart"><i className="header__menu__cart fa-solid fa-cart-shopping me-2">
                                 <p className='header__menu__count-cart'>{cartList.length}</p>
                             </i>Cart</Link>
