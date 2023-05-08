@@ -22,7 +22,7 @@ const ProductDetail = () => {
   const [topProducts, setTopproducts] = useState([])
   const [sizeChoose, setSizeChoose] = useState('')
   const [sizeShoes,setSizeShoes] = useState([])
- 
+  console.log(isLogin)
   useEffect(() => {
     window.scroll({
       top: 0,
@@ -42,7 +42,7 @@ const ProductDetail = () => {
   const getProData = async () => {
     axios.get('https://localhost:7164/api/Products/GetProduct', {
       params: {
-        PageIndex: 2,
+        PageIndex: 1,
         PageSize: 4
       }
     })
@@ -85,10 +85,10 @@ const ProductDetail = () => {
       <div className="detail__product">
         <p className='main__title'>Chi tiết sản phẩm</p>
         <Row xs={1} xl={2} md={2}>
-          <Col xl={6}>
+          <Col xl={5}>
             <img className='detail__product-img' src={`data:image/png;base64,${product.im}`} />
           </Col>
-          <Col xl={6}>
+          <Col xl={7}>
             <div className="detail__product-title">
               <span>{product.name}</span>
             </div><br />

@@ -60,6 +60,7 @@
 
 .navbar__item {
   padding: 0 1.5rem;
+  font-weight: 500;
 }
 
 .navbar__dropdown,

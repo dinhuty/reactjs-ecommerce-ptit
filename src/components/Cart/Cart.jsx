@@ -129,16 +129,16 @@ const Cart = () => {
                 </Box>
               </Row>
               <Row>
-                <p className='cart__checkout__title__price'><p>Tổng tiền sản phẩm: </p>{TotalPriceProduct().toLocaleString('it-IT', { currency: 'VND' })}đ</p>
+                <div className='cart__checkout__title__price'><p>Tổng tiền sản phẩm: </p>{TotalPriceProduct().toLocaleString('it-IT', { currency: 'VND' })}đ</div>
               </Row>
               <Row>
-                <p className='cart__checkout__title__price'><p>Giảm giá (Voucher): - </p>{reducePrice.toLocaleString('it-IT', { currency: 'VND' })}đ</p>
+                <div className='cart__checkout__title__price'><p>Giảm giá (Voucher): - </p>{reducePrice.toLocaleString('it-IT', { currency: 'VND' })}đ</div>
               </Row>
               <Row>
-                <p className='cart__checkout__title__price'><p>Phí vận chuyển: </p><p>0đ</p></p>
+                <div className='cart__checkout__title__price'><p>Phí vận chuyển: </p><p>0đ</p></div>
               </Row>
               <Row>
-                <p className='cart__checkout__title__price cart__checkout__title__price__total'>Tổng thanh toán: {TotalPriceProduct().toLocaleString('it-IT', { currency: 'VND' })}đ</p>
+                <div className='cart__checkout__title__price cart__checkout__title__price__total'>Tổng thanh toán: {TotalPriceProduct().toLocaleString('it-IT', { currency: 'VND' })}đ</div>
               </Row>
 
               <Row>

@@ -11,24 +11,10 @@ const SkeletonCard = (props) => {
 
         number.slice(0,props.count).map((_, index) => (
 
-            <Col>
-                <Skeleton key={index} className='card__btnx' ></Skeleton>
+            <Col key={index} >
+                <Skeleton className='card__btnx' ></Skeleton>
             </Col>
-            // <Col key={index}>
-            //     <Card className='card__product'>
-            //         <div className='card__img'>
-            //             <Skeleton className='card__btnx' ></Skeleton>
-            //         </div>
-            //         <Card.Body>
-            //             <Card.Title className='cursor-btn'><Skeleton className='card__btnx' ></Skeleton></Card.Title>
-            //             <Card.Text>
-            //                 <Skeleton className='card__btnx' ></Skeleton>
-            //             </Card.Text>
-
-            //         </Card.Body>
-            //             <Skeleton className='card__btnx' ></Skeleton>
-            //     </Card>
-            // </Col>
+           
         ))
 
     )

@@ -128,7 +128,7 @@ export const TopNav = () => {
                         {
                             mainNav.map((item, index) => (
                                 <div
-                                    key={index}
+                                    key={item.path}
                                     className='navbar__item'
                                 >
                                     {
@@ -148,7 +148,7 @@ export const TopNav = () => {
                         <li className = {`${pathname === "/cart"? "navbar__cart active_nav" : "navbar__cart"}`}>
                             <Link className="linktext mx-4" to="/cart"><i className="header__menu__cart fa-solid fa-cart-shopping me-2">
                                 <p className='header__menu__count-cart'>{cartList.length}</p>
-                            </i>Cart</Link>
+                            </i>Giỏ hàng</Link>
 
                         </li>
 
@@ -156,7 +156,7 @@ export const TopNav = () => {
                             <Dropdown.Toggle variant="none" id="dropdown" className='navbar__dropdown__toggle'>
                                 <img
                                     src={!isLogin ? "https://w7.pngwing.com/pngs/535/466/png-transparent-google-account-microsoft-account-login-email-gmail-email-miscellaneous-text-trademark-thumbnail.png" : "https://lh3.googleusercontent.com/a/AGNmyxaaijkc0gEM3Uj5OnNktNgAOmaJwCM0Ywk3p5is0A=s360"}
-                                    class="rounded-circle"
+                                    className="rounded-circle"
                                     height="28"
                                     alt="avatar"
                                     loading="lazy"
@@ -184,7 +184,7 @@ export const TopNav = () => {
                                         </Dropdown.Item>
                                         <Dropdown.Divider />
                                         <Dropdown.Item>
-                                            <Link to='/cart/order' className="dropdown-item" >My Order</Link>
+                                            <Link to='/cart/order' className="dropdown-item" >Đơn hàng của tôi</Link>
                                         </Dropdown.Item>
                                         <Dropdown.Item>
                                             <Link to='/' className="dropdown-item" >Thông báo</Link>

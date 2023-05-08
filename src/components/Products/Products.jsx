@@ -95,9 +95,24 @@ const Products = () => {
     }
   }
 
-  const handleSort = (value) => {
-    console.log(`selected ${value}`);
+  const handleSort = async (value) => {
+    dispatch(getProductRequest());
+    axios.get('https://localhost:7164/api/Products/GetProduct', {
+      params: {
+        PageIndex: page,
+        PageSize: 8,
+        sort: value
+      }
+    })
+      .then(res => {
+        dispatch(getProduct(res.data.products));
+        dispatch(getTotalPage(res.data.totalPages))
+      })
+      .catch(err => {
+        console.log(err)
+      });
   };
+
   return (
     <div className='products container'>
       <h1 className='main__title product__title'>Tất cả sản phẩm</h1>
@@ -108,11 +123,12 @@ const Products = () => {
           onChange={handleSort}
           options={[
             { value: 'none', label: 'Sắp xếp giá' },
-            { value: 't', label: 'Tăng' },
-            { value: 'g', label: 'Giảm' },
+            { value: 'T', label: 'Tăng' },
+            { value: 'G', label: 'Giảm' },
           ]}
         />
       </div>
+      {!listProductPage && <h1>Khong co san pham nao</h1>}
       <Row xl={4} md={3} xs={2} className='g-4 gird__product' >
         {!loading ?
           listProductPage.map((product, index) => (

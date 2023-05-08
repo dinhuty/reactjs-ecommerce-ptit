@@ -4,14 +4,15 @@ import { Button, Card, Col, Container, Row } from 'react-bootstrap'
 import './home.css'
 import img_banner from '../../data/img_banner.png'
 import data from '../../data/db.json'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { add } from '../Redux/cartSlice'
 import axios from 'axios'
 import SkeletonCard from '../Products/SkeletonCard'
 
 export const Home = () => {
-
+  const [searchParams] = useSearchParams();
+  console.log(searchParams.get('vnp_Amount'))
 
   return (
     <div className='home'>
@@ -191,32 +192,32 @@ const Overlay = () => {
   return (
     <Row xl={3} md={1} xs={1} className='g-4 align-items-center'>
       <Col>
-        <div class="block block1 cursor-btn">
-          <div class="overlay"></div>
-          <div class="block--text">
-            <div class="text--head">Bắt đầu chạy</div>
-            <div class="text--quote">“Bạn vẫn coi mình là một người mới, hoặc muốn cảm thấy được trang bị đầy đủ cho lần chạy đầu tiên với một đôi giày được sản xuất để giúp bạn đi.”</div>
-            <div class="text--person">Walt Disney</div>
+        <div className="block block1 cursor-btn">
+          <div className="overlay"></div>
+          <div className="block--text">
+            <div className="text--head">Bắt đầu chạy</div>
+            <div className="text--quote">“Bạn vẫn coi mình là một người mới, hoặc muốn cảm thấy được trang bị đầy đủ cho lần chạy đầu tiên với một đôi giày được sản xuất để giúp bạn đi.”</div>
+            <div className="text--person">Walt Disney</div>
           </div>
         </div>
       </Col>
       <Col>
-        <div class="block block2 cursor-btn">
-          <div class="overlay"></div>
-          <div class="block--text">
-            <div class="text--head">Cuộc phiêu lưu</div>
-            <div class="text--quote">“Bạn muốn nâng cao khả năng tiếp thu bản chất của mình và vượt ra khỏi con đường bị đánh bại hơn hầu hết mọi người, vì vậy bạn cần có độ bám và độ ổn định tốt nhất của chúng tôi.”</div>
-            <div class="text--person">Walt Disney</div>
+        <div className="block block2 cursor-btn">
+          <div className="overlay"></div>
+          <div className="block--text">
+            <div className="text--head">Cuộc phiêu lưu</div>
+            <div className="text--quote">“Bạn muốn nâng cao khả năng tiếp thu bản chất của mình và vượt ra khỏi con đường bị đánh bại hơn hầu hết mọi người, vì vậy bạn cần có độ bám và độ ổn định tốt nhất của chúng tôi.”</div>
+            <div className="text--person">Walt Disney</div>
           </div>
         </div>
       </Col>
       <Col>
-        <div class="block block3 cursor-btn">
-          <div class="overlay"></div>
-          <div class="block--text">
-            <div class="text--head">Tốc độ</div>
-            <div class="text--quote">“Bạn thích rút ngắn thời gian chạy tính giờ hoặc bạn sẵn sàng thi đấu với một đôi giày nhẹ hơn để giúp bạn di chuyển với tốc độ cao.”</div>
-            <div class="text--person">Walt Disney</div>
+        <div className="block block3 cursor-btn">
+          <div className="overlay"></div>
+          <div className="block--text">
+            <div className="text--head">Tốc độ</div>
+            <div className="text--quote">“Bạn thích rút ngắn thời gian chạy tính giờ hoặc bạn sẵn sàng thi đấu với một đôi giày nhẹ hơn để giúp bạn di chuyển với tốc độ cao.”</div>
+            <div className="text--person">Walt Disney</div>
           </div>
         </div>
       </Col>
