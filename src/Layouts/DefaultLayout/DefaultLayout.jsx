@@ -4,7 +4,7 @@ import Footer from '../components/Footer/Footer'
 
 const DefaultLayout = ({ children }) => {
     return (
-        <div>
+        <div className='main'>
             <TopNav />
             <div className="container">
                 {children}

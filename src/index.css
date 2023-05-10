@@ -29,7 +29,7 @@
 html {
   width: 100%;
   height: 100vh;
-  font-size: 13px;
+  font-size: 12px;
   list-style: none;
   color: var(--black);
   text-decoration: none;
@@ -41,6 +41,7 @@ a {
 
 body {
   margin: 0;
+  font-weight: 500;
   font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

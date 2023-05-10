@@ -1,16 +1,19 @@
-.order{
+.order {
     padding: 60px 0px;
     min-height: 100vh;
+    position: relative;
 }
-.order-main{
+
+.order-main {
     padding: 5px 20px;
 }
 
-.order-address{
+.order-address {
     color: orangered;
     font-weight: 500;
 }
-.order_item{
+
+.order_item {
     padding: 1rem 1rem;
     margin: 1.2rem 0rem;
     background-color: white;
@@ -18,121 +21,151 @@
     /* box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset; */
     border-radius: 1rem;
 }
-.order_item_header{
+
+.order_item_header {
     display: flex;
     justify-content: space-between;
     padding-bottom: 0.5rem;
 }
-.order_item_header-left{
+
+.order_item_header-left {
     display: flex;
 }
-.order_item_header-left>span:nth-child(1)>span:nth-child(1){
+
+.order_item_header-left>span:nth-child(1)>span:nth-child(1) {
     font-size: 1.5rem;
     font-weight: 600;
     color: rgb(114, 113, 113);
 }
-.order_item_header-left>span:nth-child(1)>span:nth-child(2){
+
+.order_item_header-left>span:nth-child(1)>span:nth-child(2) {
     font-size: 1.5rem;
     font-weight: 600;
     color: rgb(33, 33, 33);
     padding-right: 1rem;
 }
-.order_item_header-left>div{
+
+.order_item_header-left>div {
     display: flex;
     align-items: center;
-    background-color: #36ca09;
     border-radius: 0.75rem;
 }
-.order_item_header-left>div>span{
+
+.order_item_header-left>div>span {
     align-self: center;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-weight: 500;
     color: white;
-    padding:  0.25rem 0.75rem;
+    padding: 0.35rem 0.75rem;
     border-radius: 0.75rem;
 }
-.order_item_header-right>span{
+
+.order_item_header-left>div .success {
+    background-color: #36ca09;
+
+}
+
+.order_item_header-left>div .faild {
+    background-color: #7c7a7a;
+
+}
+
+.order_item_header-right>span {
     font-size: 1.5rem;
     font-weight: 600;
     color: rgb(33, 33, 33);
 }
-.order_item_desc_time{
+
+.order_item_desc_time {
     font-size: 1rem;
     font-weight: 500;
 }
-.order_item_desc_time>span:nth-child(1){
+
+.order_item_desc_time>span:nth-child(1) {
     font-size: 1.2rem;
     margin: 0rem 1rem 0rem 2rem;
     color: #9C9C9C;
 
 }
-.order_item_desc_time>span:nth-child(2){
+
+.order_item_desc_time>span:nth-child(2) {
     font-size: 1rem;
     margin-right: 1rem;
     color: #9C9C9C;
 
 }
-.order_item_desc_time>span:nth-child(3){
+
+.order_item_desc_time>span:nth-child(3) {
     font-size: 1rem;
     margin-right: 1rem;
     color: #9C9C9C;
 
 }
-.order_item_desc_time>span:nth-child(4){
+
+.order_item_desc_time>span:nth-child(4) {
     font-size: 1rem;
     margin-right: 0.25rem;
     color: #9C9C9C;
 
 }
-.order_item_desc_time>span:nth-child(5){
+
+.order_item_desc_time>span:nth-child(5) {
     font-size: 1rem;
     margin-right: 1rem;
     color: rgb(0, 115, 255);
 
 }
-.order_item_desc_time>span:nth-child(6){
+
+.order_item_desc_time>span:nth-child(6) {
     font-size: 1rem;
     margin-right: 0.25rem;
     color: #9C9C9C;
 }
-.order_item_desc_product{
+
+.order_item_desc_product {
     padding: 2rem;
 }
-.order_img_product{
-  aspect-ratio : 1 / 1;
-  overflow: hidden;
-  border-radius: 0.25rem;
+
+.order_img_product {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    border-radius: 0.25rem;
 }
-.order_img_product>img{
+
+.order_img_product>img {
 
     width: 100%;
 }
 
-.order_desc_product>p:nth-child(1){
+.order_desc_product>p:nth-child(1) {
     font-size: 1.2rem;
     font-weight: 600;
     color: rgb(33, 33, 33);
 }
-.order_desc_product>p:nth-child(2){
+
+.order_desc_product>p:nth-child(2) {
     font-size: 1rem;
     font-weight: 600;
     color: #9C9C9C;
 }
-.order_desc_product>p:nth-child(3){
+
+.order_desc_product>p:nth-child(3) {
     font-size: 1rem;
     font-weight: 600;
     color: #9C9C9C;
 }
-.order_item_btn{
+
+.order_item_btn {
     display: flex;
     margin-left: 2rem;
     transition: all 1s ease-in-out;
 }
-.order_item_btn>div:hover{
+
+.order_item_btn>div:hover {
     opacity: 0.8;
 }
 
-.cancel_order{
+.cancel_order {
     color: white;
     font-weight: 600;
     padding: 0.75rem 1.5rem;
@@ -141,11 +174,114 @@
     opacity: 0.9;
     margin-right: 1rem;
 }
-.contact_order{
+
+.item_received {
+    color: white;
+    font-weight: 600;
+    padding: 0.75rem 1.5rem;
+    background-color: orangered;
+    border-radius: 0.25rem;
+    opacity: 0.9;
+    margin-right: 1rem;
+}
+
+.contact_order {
     opacity: 0.9;
     color: white;
     font-weight: 600;
     padding: 0.75rem 1.5rem;
     background-color: rgb(0, 115, 255);
     border-radius: 0.25rem;
+}
+
+.csp {
+    cursor: pointer;
+}
+
+.popup {
+    font-weight: 600;
+    position: fixed;
+    top: 50%;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    height: 500px;
+    width: 100%;
+    max-width: 700px;
+    left: 50%;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    width: 50%;
+}
+
+.overlay2 {
+    position: fixed;
+    z-index: 9998;
+    background-color: rgba(51, 50, 50, 0.604);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.success_icon {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 8rem;
+    background-color: white;
+    color: #36ca09;
+
+
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+
+}
+
+.popup>div {
+    width: 400px;
+    padding: 1.5rem;
+    background-color: #36ca09;
+    border-radius: 0.5rem;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    bottom: 1.5rem;
+    display: flex;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: white;
+    transition: all 0.2s ease-in-out;
+}
+
+.popup>div:hover {
+    opacity: 0.8;
+}
+
+.popup>span {
+    font-size: 2rem;
+    position: absolute;
+    top: 12rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.popup>p {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #7c7a7a;
+    position: absolute;
+    top: 20rem;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+.popup>p>span {
+
+    color: rgba(240, 24, 24, 0.927);
+    font-weight: 600;
+
 }

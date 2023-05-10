@@ -79,6 +79,8 @@ const TopProducts = () => {
       </Row>
       <h1 className='main__title'>The Latest</h1>
       <Overlay />
+      <h1 className='main__title'>Trending</h1>
+      <img className='home_trending csp' src="https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_1824,c_limit/972e353f-99a4-4838-9526-d89fd1d2eb3e/nike-just-do-it.jpg" alt="" />
       <h1 className='main__title'>Sản phẩm bán chạy</h1>
       <Row xl={4} md={3} xs={2} className='g-4 gird__product' >
         {!loading ?
@@ -190,7 +192,7 @@ const Slide = () => {
 const Overlay = () => {
 
   return (
-    <Row xl={3} md={1} xs={1} className='g-4 align-items-center'>
+    <Row xl={2} md={1} xs={1} className='g-4 align-items-center'>
       <Col>
         <div className="block block1 cursor-btn">
           <div className="overlay"></div>
@@ -217,6 +219,16 @@ const Overlay = () => {
           <div className="block--text">
             <div className="text--head">Tốc độ</div>
             <div className="text--quote">“Bạn thích rút ngắn thời gian chạy tính giờ hoặc bạn sẵn sàng thi đấu với một đôi giày nhẹ hơn để giúp bạn di chuyển với tốc độ cao.”</div>
+            <div className="text--person">Walt Disney</div>
+          </div>
+        </div>
+      </Col>
+      <Col>
+        <div className="block block1 cursor-btn">
+          <div className="overlay"></div>
+          <div className="block--text">
+            <div className="text--head">Bắt đầu chạy</div>
+            <div className="text--quote">“Bạn vẫn coi mình là một người mới, hoặc muốn cảm thấy được trang bị đầy đủ cho lần chạy đầu tiên với một đôi giày được sản xuất để giúp bạn đi.”</div>
             <div className="text--person">Walt Disney</div>
           </div>
         </div>

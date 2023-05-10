@@ -5,6 +5,7 @@ import { useNavigate, useParams, Link } from 'react-router-dom'
 import data from '../../data/db.json'
 import { toast, Zoom } from 'react-toastify'
 import { add } from '../Redux/cartSlice.js'
+import { Rating } from '@mui/material'
 import './detailproduct.css'
 import { Button, Card, Col, Row } from 'react-bootstrap'
 import axios from 'axios'
@@ -21,7 +22,7 @@ const ProductDetail = () => {
   const [active_guide, setActive_guide] = useState(true)
   const [topProducts, setTopproducts] = useState([])
   const [sizeChoose, setSizeChoose] = useState('')
-  const [sizeShoes,setSizeShoes] = useState([])
+  const [sizeShoes, setSizeShoes] = useState([])
   console.log(isLogin)
   useEffect(() => {
     window.scroll({
@@ -69,7 +70,7 @@ const ProductDetail = () => {
       })
     }
     else {
-      dispatch(add({product: product,sizeChoose: sizeChoose}))
+      dispatch(add({ product: product, sizeChoose: sizeChoose }))
       toast.success('Đã thêm 1 sản phẩm', {
         position: toast.POSITION.TOP_CENTER,
         autoClose: 1000,
@@ -83,7 +84,7 @@ const ProductDetail = () => {
   return (
     <Container>
       <div className="detail__product">
-        <p className='main__title'>Chi tiết sản phẩm</p>
+        <p className='main__title'>Thông tin sản phẩm: </p>
         <Row xs={1} xl={2} md={2}>
           <Col xl={5}>
             <img className='detail__product-img' src={`data:image/png;base64,${product.im}`} />
@@ -91,7 +92,14 @@ const ProductDetail = () => {
           <Col xl={7}>
             <div className="detail__product-title">
               <span>{product.name}</span>
-            </div><br />
+            </div>
+            <div className="rating">
+              <div className="rating_ch">
+              <Rating name="size-large" defaultValue={4} size="large" />
+              </div>
+              <span className='csp'>Viết đánh giá</span>
+            </div>
+            <br />
             <p></p>
             <p className='detail__product-desc'>{product.description}</p>
             <h5>Chọn Size:</h5>
@@ -99,10 +107,10 @@ const ProductDetail = () => {
               {
                 sizeShoes.map((size, index) => (
                   // <label className={ size.size === sizeChoose ? "product__size_number active__choose-size " : 'product__size_number'} key={index}>
-                  <label  className={ size.size === sizeChoose ? "product__size_number active__choose-size " : 'product__size_number'} key={index}>
+                  <label className={size.size === sizeChoose ? "csp product__size_number active__choose-size " : 'csp product__size_number'} key={index}>
                     <input type="radio" name="size" value={size.size} disabled={size.qty == 0 ? true : false} onChange={(e) => setSizeChoose(e.target.value)} />
                     <div className={size.qty == 0 ? "size_number_opacity" : ""}>{size.size}</div>
-                    {console.log("size",size.size,"sl:",size.qty,"bang 0:",size.qty == 0 )}
+                    {console.log("size", size.size, "sl:", size.qty, "bang 0:", size.qty == 0)}
                   </label>
                 ))
               }

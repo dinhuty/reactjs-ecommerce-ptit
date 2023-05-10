@@ -7,6 +7,7 @@ import ProductDetail from "../components/ProductDetail/ProductDetail";
 import Products from "../components/Products/Products";
 import SignIn from "../components/SignIn/SignIn";
 import SignUp from "../components/SignUp/SignUp";
+import Contact from "../components/contact/Contact";
 
 export const publicRouter = [
     {
@@ -31,7 +32,7 @@ export const publicRouter = [
         path: '/cart', component: Cart
     },
     {
-        path: '/contact', component: Cart
+        path: '/contact', component: Contact
     },
     {
         path: '/cart/order', component: Order
