@@ -104,7 +104,8 @@ export const TopNav = () => {
                 </button>
                 <div className="header__logo">
                     <Link to="/">
-                        <img className='navbar-logo' src={logo} alt="" />
+                        {/* <img className='navbar-logo' src={logo} alt="" /> */}
+                        <span>V.TT</span>
                     </Link>
                 </div>
 
@@ -114,7 +115,7 @@ export const TopNav = () => {
                         <input type="search" placeholder="Search" className='search__bar' onChange={hanldeSearch} />
                     </form>
                 </div>
-                <div className=" collapse navbar-collapse bg-white" id="navbarNavDropdown">
+                <div className=" collapse navbar-collapse" id="navbarNavDropdown">
                     <div className="ms-auto d-none d-lg-block">
                         <form onSubmit={hanldeSearch}>
                             <input type="search" onChange={(e) => {
@@ -145,7 +146,7 @@ export const TopNav = () => {
 
                     </div>
                     <ul className="navbar-nav ms-auto ">
-                        <li className = {`${pathname === "/cart"? "navbar__cart active_nav" : "navbar__cart"}`}>
+                        <li className={`${pathname === "/cart" ? "navbar__cart active_nav" : "navbar__cart"}`}>
                             <Link className="linktext mx-4" to="/cart"><i className="header__menu__cart fa-solid fa-cart-shopping me-2">
                                 <p className='header__menu__count-cart'>{cartList.length}</p>
                             </i>Giỏ hàng</Link>

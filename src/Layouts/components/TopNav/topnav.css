@@ -1,17 +1,25 @@
 .container_nav {
+  padding: 0 2rem !important;
   height: 100% !important;
 }
 
 .nav__header {
-  background-color: #fff;
-  color: black !important;
+  background: rgb(255,255,255);
+  color: var(--white) !important;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 99;
   height: 90px;
   opacity: 1 !important;
-  transition: height 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+.header__logo span {
+  padding-left: 2rem;
+  font-weight: 700;
+  font-size: 3rem;
+  color: var(--blue);
 }
 
 .navbar-logo {
@@ -26,34 +34,36 @@
 }
 
 .search__bar {
+  color: #fff;
   width: 100%;
   padding: 1.2rem 1.2rem 1.2rem 32px;
-  background: #ffffff url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
-  border: solid 1px #ccc;
+  background: transparent url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+  border: solid 2px #3c3b3b5a;
 
   /* -webkit-border-radius: 10em;
   -moz-border-radius: 10em;
   border-radius: 10em; */
-  border-radius: 1rem;
+  border-radius: 0.6rem;
 
-  -webkit-transition: all .5s;
-  -moz-transition: all .5s;
-  transition: all .5s;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  transition: all .3s;
 }
 
 .search__bar:focus {
   /* width: 300px; */
-  background-color: #fff;
+  background-color: #ffffffc3;
   border-color: var(--blue);
-  transform: scale(1.15);
+  transform: scale(1.05);
   outline: none;
-  -webkit-box-shadow: 0 0 5px rgba(109, 207, 246, .5);
+  /* -webkit-box-shadow: 0 0 5px rgba(109, 207, 246, .5);
   -moz-box-shadow: 0 0 5px rgba(109, 207, 246, .5);
-  box-shadow: 0 0 5px rgba(109, 207, 246, .5);
+  box-shadow: 0 0 5px rgba(109, 207, 246, .5); */
 }
 
 .shrink {
   height: 70px;
+  background-color: #fff;
   box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
   z-index: 100;
 }

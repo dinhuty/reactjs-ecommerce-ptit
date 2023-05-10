@@ -3,7 +3,7 @@
   height: auto;
   width: 100%;
   margin: auto;
-  margin-top: 90px;
+  margin-top: 3rem;
 }
 
 .home-title {
@@ -14,7 +14,7 @@
 
 /* Slide css */
 .slide {
-  width: 100%;
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,7 +43,10 @@
   padding-top: 5%;
   padding-bottom: 5%;
 }
+.slide img{
 
+
+}
 .slide__info__desc {
   font-size: 1.2rem;
   padding-top: 1rem;
@@ -200,6 +203,8 @@
   color: orange;
 }
 
-.home_trending{
+.home_trending {
   width: 100%;
 }
+
+/* test */

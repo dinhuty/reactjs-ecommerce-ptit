@@ -10,6 +10,7 @@ import { add } from '../Redux/cartSlice'
 import axios from 'axios'
 import { getProductRequest, getProduct, getTotalPage } from '../Redux/productSlice'
 import SkeletonCard from './SkeletonCard'
+import nike from './nike.png'
 
 const Products = () => {
   const dispatch = useDispatch()
@@ -133,7 +134,7 @@ const Products = () => {
         {!loading ?
           listProductPage.map((product, index) => (
             <Col key={index}>
-              <Card className='card__product'>
+              {/* <Card className='card__product'>
                 <div className='card__img' onClick={() => hanldeViewProduct(product.id)}>
                   <Card.Img src={`data:image/jpeg;base64,${product.im}`} className='img__product cursor-btn' />
                 </div>
@@ -147,7 +148,30 @@ const Products = () => {
                 <Link className='card__link__btn' to={`/products/${product.id}`}>
                   <Button className='card__btn' > Xem chi tiết </Button>
                 </Link>
-              </Card>
+              </Card> */}
+              <div className="product-card">
+                <div className="product-image">
+                  <img src={`data:image/jpeg;base64,${product.im}`} alt="Product Image" />
+                  <div className="product-hover">
+                    <button onClick={() => navigate(`/products/${product.id}`)} className="btn btn-primary">Xem chi tiết</button>
+                  </div>
+                </div>
+                <div className="product-info">
+                  <h3 className="product-name csp" onClick={() => navigate(`/products/${product.id}`)}>{product.name}</h3>
+                  <div className="product-rating">
+                    <i className="fa fa-star"></i>
+                    <i className="fa fa-star"></i>
+                    <i className="fa fa-star"></i>
+                    <i className="fa fa-star"></i>
+                    <i className="fa fa-star"></i>
+                  </div>
+                  <span className="product-price">{product.price.toLocaleString('it-IT', { style: 'currency', currency: 'VND' })}</span>
+                </div>
+              </div>
+
+
+
+
             </Col>
           ))
           : <SkeletonCard count={8} />}

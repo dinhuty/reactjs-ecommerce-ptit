@@ -7,6 +7,7 @@ import data from '../../data/db.json'
 import { Link, useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { add } from '../Redux/cartSlice'
+import banner from './banner.jpg'
 import axios from 'axios'
 import SkeletonCard from '../Products/SkeletonCard'
 
@@ -58,21 +59,26 @@ const TopProducts = () => {
         {!loading ?
           topProducts.slice(0, 4).map((product, index) => (
             <Col key={index}>
-              <Card className='card__product'>
-                <div className='card__img' onClick={() => hanldeViewProduct(product.id)}>
-                  <Card.Img src={`data:image/jpeg;base64,${product.im}`} className='img__product cursor-btn' />
+              <div className="product-card">
+                <div className="product-image">
+                  <img src={`data:image/jpeg;base64,${product.im}`} alt="Product Image" />
+                  <div className="product-hover">
+                    <button onClick={() => navigate(`/products/${product.id}`)} className="btn btn-primary">Xem chi tiết</button>
+                  </div>
                 </div>
-                <Card.Body>
-                  <Card.Title onClick={() => hanldeViewProduct(product.id)} className='cursor-btn'>{product.name}</Card.Title>
-                  <Card.Text>
-                    <span>{product.price.toLocaleString('it-IT', { style: 'currency', currency: 'VND' })}</span>
-                  </Card.Text>
+                <div className="product-info">
+                  <h3 className="product-name csp" onClick={() => navigate(`/products/${product.id}`)}>{product.name}</h3>
+                  <div className="product-rating">
+                    <i className="fa fa-star"></i>
+                    <i className="fa fa-star"></i>
+                    <i className="fa fa-star"></i>
+                    <i className="fa fa-star"></i>
+                    <i className="fa fa-star"></i>
+                  </div>
+                  <span className="product-price">{product.price.toLocaleString('it-IT', { style: 'currency', currency: 'VND' })}</span>
+                </div>
+              </div>
 
-                </Card.Body>
-                <Link className='card__link__btn' to={`/products/${product.id}`}>
-                  <Button className='card__btn'  > Xem chi tiết </Button>
-                </Link>
-              </Card>
             </Col>
           ))
           : <SkeletonCard count={4} />}
@@ -86,21 +92,26 @@ const TopProducts = () => {
         {!loading ?
           topProducts.map((product, index) => (
             <Col key={index}>
-              <Card className='card__product'>
-                <div className='card__img' onClick={() => hanldeViewProduct(product.id)}>
-                  <Card.Img src={`data:image/jpeg;base64,${product.im}`} className='img__product cursor-btn' />
+              <div className="product-card">
+                <div className="product-image">
+                  <img src={`data:image/jpeg;base64,${product.im}`} alt="Product Image" />
+                  <div className="product-hover">
+                    <button onClick={() => navigate(`/products/${product.id}`)} className="btn btn-primary">Xem chi tiết</button>
+                  </div>
                 </div>
-                <Card.Body>
-                  <Card.Title onClick={() => hanldeViewProduct(product.id)} className='cursor-btn'>{product.name}</Card.Title>
-                  <Card.Text>
-                    <span>{product.price.toLocaleString('it-IT', { style: 'currency', currency: 'VND' })}</span>
-                  </Card.Text>
+                <div className="product-info">
+                  <h3 className="product-name csp" onClick={() => navigate(`/products/${product.id}`)}>{product.name}</h3>
+                  <div className="product-rating">
+                    <i className="fa fa-star"></i>
+                    <i className="fa fa-star"></i>
+                    <i className="fa fa-star"></i>
+                    <i className="fa fa-star"></i>
+                    <i className="fa fa-star"></i>
+                  </div>
+                  <span className="product-price">{product.price.toLocaleString('it-IT', { style: 'currency', currency: 'VND' })}</span>
+                </div>
+              </div>
 
-                </Card.Body>
-                <Link className='card__link__btn' to={`/products/${product.id}`}>
-                  <Button className='card__btn'  > Xem chi tiết </Button>
-                </Link>
-              </Card>
             </Col>
           ))
           : <SkeletonCard count={12} />}
@@ -168,8 +179,8 @@ const Slide = () => {
 
   return (
     <div className="slide container">
-      <Row xs={1} md={2} xl={2} className="align-items-center flex-column-reverse flex-md-row ">
-        <Col className="slide__info" xl={8}>
+      <Row xs={1} className="align-items-center flex-column-reverse flex-md-row ">
+        {/* <Col className="slide__info" xl={8}>
           <div className="slide__info__title">
             <span>Air Jordan 1 Mid SE</span>
           </div>
@@ -183,8 +194,14 @@ const Slide = () => {
         </Col>
         <Col className="slide__img" xl={4}>
           <img className='slide__img' src={img_banner} />
-        </Col>
+        </Col> */}
+        <img src={banner} alt="" />
       </Row>
+
+
+
+
+
     </div>
   );
 }

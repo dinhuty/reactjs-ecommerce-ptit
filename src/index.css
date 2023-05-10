@@ -9,7 +9,9 @@
   --orange: #ff6500;
   --gray: #dadce0;
   --dark-gray: ##343a40;
-  --blue: #4267b2;
+  /* --blue: #4267b2; */
+  --blue: #238ee5;
+
   --transitionDuration: 0.6s;
   --toastify-icon-color-success: var(--blue) !important;
   --toastify-color-progress-success: #fff !important;
@@ -70,14 +72,14 @@ code {
 
 .main__title {
   font-size: 28px;
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: 0;
   line-height: 1.5em;
   padding-bottom: 15px;
   position: relative;
   margin: 4rem 0 2rem 0;
 }
-
+/* 
 .main__title:before {
   content: "";
   position: absolute;
@@ -97,7 +99,7 @@ code {
   width: 95%;
   max-width: 255px;
   background-color: var(--blue);
-}
+} */
 
 .active {
   color: var(--blue);

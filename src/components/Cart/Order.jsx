@@ -20,22 +20,12 @@ function Order() {
   const vnp_ResponseCode = searchParams.get('vnp_ResponseCode')
   const vnp_Amount = searchParams.get('vnp_Amount')
   const dispatch = useDispatch()
-
   const [orderList, setOrderList] = useState([])
   const [popup, setPopup] = useState(false)
   const renderAfterCalled = useRef(false);
 
   const [defaultActive, setDefaultActive] = useState('home')
-  // if (!renderAfterCalled.current) {
-  //   // toast.success("Thanh toán thành công!", {
-  //   //   position: toast.POSITION.TOP_CENTER,
-  //   //   autoClose: 1000,
-  //   //   transition: Zoom,
-  //   //   role: "alert"
-  //   // })
-  //   console.log("dau buoi")
-  //   renderAfterCalled.current = true;
-  // }
+
   useEffect(() => {
     axios.get("https://localhost:7164/OrderList", {
       headers: {
@@ -114,13 +104,13 @@ function Order() {
         {
           product.detail.map((item, index) => (
             <Row key={index} className="order_item_desc_product">
-              <Col xl={2}>
+              <Col xl={2} md={3} xs={6}>
                 <div className="order_img_product" >
                   <img src={`data:image/jpeg;base64,${item.image}`} alt="" />
 
                 </div>
               </Col>
-              <Col xl={10}>
+              <Col xl={10} md={9}>
                 <div className="order_desc_product">
                   <p>{item.name}</p>
                   <p><span>Size: </span>{item.size}</p>
@@ -160,7 +150,6 @@ function Order() {
   const handleClose = () => {
     setPopup(false)
   }
-  console.log(typeof vnp_Amount)
   return (
     <div className='order'>
       {
