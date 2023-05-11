@@ -21,7 +21,7 @@ function Order() {
   const vnp_Amount = searchParams.get('vnp_Amount')
   const dispatch = useDispatch()
   const [orderList, setOrderList] = useState([])
-  const [popup, setPopup] = useState(false)
+  const [popup, setPopup] = useState('0')
   const renderAfterCalled = useRef(false);
 
   const [defaultActive, setDefaultActive] = useState('home')
@@ -47,7 +47,10 @@ function Order() {
             'Authorization': `Bearer ${token}`
           }
         }).then(res => {
-          setPopup(true)
+          if (vnp_ResponseCode == '00') setPopup('1')
+          else {
+            setPopup('2')
+          }
           dispatch(clearcart())
 
         }).catch(error => {
@@ -71,7 +74,14 @@ function Order() {
       .then(res => {
         console.log('thanh cong')
       })
-      .catch(error => console.log('Khong the huy'))
+      .catch(error => {
+        toast.error('Đã thanh toán không thể hủy', {
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 1000,
+          transition: Zoom,
+          role: "alert"
+        })
+      })
   }
   const tabs = (keys, orderList) => (
     orderList.filter(product => product.status == keys).map((product, index) =>
@@ -153,12 +163,23 @@ function Order() {
   return (
     <div className='order'>
       {
-        popup && <>
+        popup == '1' && <>
           <div className="overlay2" onClick={handleClose}></div>
           <div className='csp popup'>
             <i className="fa-solid fa-circle-check success_icon"></i>
             <span>Thanh toán thành công!</span>
-            <p>Hệ thống đã xác nhận đơn hàng của bạn số tiền là <span>{vnp_Amount.toLocaleString('it-IT', { currency: 'VND' })} VND</span>! Chờ để nhận hàng. Xin cảm ơn</p>
+            <p>Hệ thống đã xác nhận đơn hàng của bạn số tiền là <span>{vnp_Amount.slice(0, vnp_Amount.length - 2)} VND</span>! Chờ để nhận hàng. Xin cảm ơn</p>
+            <div onClick={handleClose}>OK</div>
+          </div>
+        </>
+      }
+      {
+        popup == '2' && <>
+          <div className="overlay2" onClick={handleClose}></div>
+          <div className='csp popup popup2'>
+            <i className="fa-solid fa-circle-exclamation warning_icon"></i>
+            <span>Thanh toán thất bại!</span>
+            <p>Hệ thống thanh toán có vẻ gặp lỗi. Đơn hàng của bạn sẽ được thanh toán khi nhận hàng với số tiền <span>{vnp_Amount.slice(0, vnp_Amount.length - 2)} VND</span>! Xin cảm ơn</p>
             <div onClick={handleClose}>OK</div>
           </div>
         </>

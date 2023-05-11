@@ -10,7 +10,6 @@ import { add } from '../Redux/cartSlice'
 import axios from 'axios'
 import { getProductRequest, getProduct, getTotalPage } from '../Redux/productSlice'
 import SkeletonCard from './SkeletonCard'
-import nike from './nike.png'
 
 const Products = () => {
   const dispatch = useDispatch()
@@ -48,7 +47,7 @@ const Products = () => {
       renderAfterCalled.current = true;
     }
 
-  }, [page]);
+  }, []);
 
   const handleAddtoCart = (product) => {
     dispatch(add(product))

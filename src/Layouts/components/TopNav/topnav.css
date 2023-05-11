@@ -34,7 +34,8 @@
 }
 
 .search__bar {
-  color: #fff;
+  color: black;
+  font-size: 1.2rem;
   width: 100%;
   padding: 1.2rem 1.2rem 1.2rem 32px;
   background: transparent url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;

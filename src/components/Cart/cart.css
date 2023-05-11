@@ -167,6 +167,10 @@
     transition: transform 0.2s ease-in-out;
 }
 
+.detail__product-img {
+    width: 100%;
+}
+
 .product-qty:active {
     transform: scale(1.2);
 }

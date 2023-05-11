@@ -54,7 +54,7 @@ export const TopNav = () => {
     const activeNav = mainNav.findIndex(e => e.path === pathname)
     const headerRef = useRef(null)
 
-    const hanldeSearch = (e) => {
+    const hanldeSearch = async (e) => {
         e.preventDefault();
         navigate('/products')
         const getProData = async () => {
@@ -66,9 +66,9 @@ export const TopNav = () => {
                     PageSize: 30
                 }
             })
-                .then(res => {
-                    dispatch(getProduct(res.data.products));
-                    dispatch(getTotalPage(res.data.totalPage))
+                .then(async res => {
+                    await dispatch(getProduct(res.data.products));
+                    await dispatch(getTotalPage(res.data.totalPage))
                     setTextSearch('')
 
                 })
@@ -105,14 +105,14 @@ export const TopNav = () => {
                 <div className="header__logo">
                     <Link to="/">
                         {/* <img className='navbar-logo' src={logo} alt="" /> */}
-                        <span>V.TT</span>
+                        <span>Shop</span>
                     </Link>
                 </div>
 
 
                 <div className="mx-auto my-3 d-lg-none d-sm-block d-xs-block">
                     <form onSubmit={hanldeSearch}>
-                        <input type="search" placeholder="Search" className='search__bar' onChange={hanldeSearch} />
+                        <input type="search" placeholder="Search" onClick={()=> console.log("ok")} className='search__bar' onChange={hanldeSearch} />
                     </form>
                 </div>
                 <div className=" collapse navbar-collapse" id="navbarNavDropdown">
@@ -156,7 +156,7 @@ export const TopNav = () => {
                         <Dropdown>
                             <Dropdown.Toggle variant="none" id="dropdown" className='navbar__dropdown__toggle'>
                                 <img
-                                    src={!isLogin ? "https://w7.pngwing.com/pngs/535/466/png-transparent-google-account-microsoft-account-login-email-gmail-email-miscellaneous-text-trademark-thumbnail.png" : "https://lh3.googleusercontent.com/a/AGNmyxaaijkc0gEM3Uj5OnNktNgAOmaJwCM0Ywk3p5is0A=s360"}
+                                    src={!isLogin ? "https://static-00.iconduck.com/assets.00/user-avatar-icon-512x512-vufpcmdn.png" : "https://lh3.googleusercontent.com/a/AGNmyxaaijkc0gEM3Uj5OnNktNgAOmaJwCM0Ywk3p5is0A=s360"}
                                     className="rounded-circle"
                                     height="28"
                                     alt="avatar"

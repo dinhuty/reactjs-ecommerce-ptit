@@ -79,7 +79,9 @@ const Cart = () => {
                   <Col xl={5} md={5} xs={5}>
                     <Row className="align-items-center" >
                       <Col xl={4} md={4} xs={4}>
-                        <img className='detail__product-img' src={`data:image/jpeg;base64,${product_quantity.product.im}`} />
+                        <div className="detail_box_img">
+                          <img className='detail__product-img' src={`data:image/jpeg;base64,${product_quantity.product.im}`} />
+                        </div>
 
                       </Col>
                       <Col xl={8} md={8} xs={8}>

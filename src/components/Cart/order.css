@@ -223,6 +223,19 @@
     bottom: 0;
 }
 
+.warning_icon {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 8rem;
+    background-color: white;
+    color: #ca0c09;
+
+
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
 .success_icon {
     position: absolute;
     left: 50%;
@@ -237,7 +250,10 @@
 
 
 }
+.popup2>div{
+    background-color: #ca0c09 !important;
 
+}
 .popup>div {
     width: 400px;
     padding: 1.5rem;
@@ -273,6 +289,7 @@
     font-weight: 500;
     color: #7c7a7a;
     position: absolute;
+    text-align: justify;
     top: 20rem;
     left: 50%;
     transform: translate(-50%, -50%);

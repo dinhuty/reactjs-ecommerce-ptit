@@ -1,6 +1,7 @@
 .products {
    padding-top: 100px;
    padding-bottom: 5rem;
+   min-height: 100vh;
 
 }
 

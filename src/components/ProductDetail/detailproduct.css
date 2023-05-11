@@ -4,14 +4,23 @@
     font-weight: 500;
 }
 
-.detail__product-img {
+.detail__product-img-desc {
     width: 100%;
     height: auto;
+    position: absolute;
+    transition: transform 0.2s ease-in-out;
 }
 
 .detail__product-desc {
     font-size: 1.2rem;
     color: rgb(117, 117, 117);
+}
+
+.detail_box_img {
+    cursor: pointer;
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
 }
 
 .button__detail__add_cart {
@@ -128,12 +137,14 @@
 }
 
 .product__size_number:hover {
-    
+
     border: 2px solid rgba(249, 0, 0, 0.756);
 }
-.detail__product h5{
+
+.detail__product h5 {
     font-weight: 600;
 }
+
 .product__size_number>input {
     visibility: hidden;
     position: absolute;
@@ -160,9 +171,10 @@
     transition: all 0.3s ease-in-out;
 }
 
-.rating:hover{
+.rating:hover {
     opacity: 0.6;
 }
+
 .rating>span {
     padding-left: 3rem;
     font-size: 1.2rem;

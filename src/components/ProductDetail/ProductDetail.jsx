@@ -16,6 +16,9 @@ import img from '../../data/overlay1.png'
 const ProductDetail = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate()
+
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [scale, setScale] = useState(1);
   const { id } = useParams()
   const isLogin = useSelector(selectSucccess)
   const [product, setProduct] = useState({})
@@ -81,13 +84,38 @@ const ProductDetail = () => {
     }
   }
   console.log(sizeChoose)
+
+  function handleMouseMove(event) {
+    // const { left, top, width, height } = event.target.getBoundingClientRect();
+    // const x = event.clientX - left;
+    // const y = event.clientY - top;
+    // const offsetX = (x / width - 0.5) * 2;
+    // const offsetY = (y / height - 0.5) * 2;
+
+    // setMousePosition({ x: offsetX, y: offsetY });
+    // setScale(1.5);
+  }
+
+  function handleMouseLeave(event) {
+    setMousePosition({ x: 0, y: 0 });
+    setScale(1);
+  }
   return (
     <Container>
       <div className="detail__product">
         <p className='main__title'>Thông tin sản phẩm: </p>
         <Row xs={1} xl={2} md={2}>
           <Col xl={5}>
-            <img className='detail__product-img' src={`data:image/png;base64,${product.im}`} />
+            <div className="detail_box_img">
+              <img className="detail__product-img-desc"
+                src={`data:image/png;base64,${product.im}`}
+                style={{
+                  transform: `translate(${mousePosition.y * 50}%, ${mousePosition.x * 50}%) scale(${scale})`,
+                }}
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+              />
+            </div>
           </Col>
           <Col xl={7}>
             <div className="detail__product-title">
@@ -95,7 +123,7 @@ const ProductDetail = () => {
             </div>
             <div className="rating">
               <div className="rating_ch">
-              <Rating name="size-large" defaultValue={4} size="large" />
+                <Rating name="size-large" defaultValue={4} size="large" />
               </div>
               <span className='csp'>Viết đánh giá</span>
             </div>
